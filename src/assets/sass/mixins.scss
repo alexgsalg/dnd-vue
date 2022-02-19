@@ -1,0 +1,223 @@
+// Set horizontal padding.
+@mixin padding-x($value) {
+  padding-left: $value;
+  padding-right: $value;
+}
+
+// Set vertical padding.
+@mixin padding-y($value) {
+  padding-bottom: $value;
+  padding-top: $value;
+}
+
+// Set horizontal margin.
+@mixin margin-x($value) {
+  margin-left: $value;
+  margin-right: $value;
+}
+
+// Set vertical margin.
+@mixin margin-y($value) {
+  margin-bottom: $value;
+  margin-top: $value;
+}
+
+// Set font size and line height.
+@mixin font-size-line-height($font-size, $line-height) {
+  font-size: px-to-rem($font-size);
+  line-height: ($line-height / $font-size);
+}
+
+// Set width and height of the same size.
+@mixin width-height($size) {
+  height: $size;
+  width: $size;
+}
+
+// Remove the default select appearance.
+@mixin remove-select-appearance() {
+  appearance: none;
+  border: 0;
+
+  &::-ms-expand {
+    display: none;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+// Remove style from a list.
+@mixin list-unstyled() {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+// Set image as background cover.
+@mixin cover($url, $position: center center) {
+  background-image: url($url);
+  background-position: $position;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+// Position the element and fill its parent.
+@mixin position-fill($position: absolute) {
+  height: 100%;
+  left: 0;
+  position: $position;
+  top: 0;
+  width: 100%;
+}
+
+// Position the element absolutely centered.
+@mixin position-absolute-center() {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+// Position the element absolutely center horizontal.
+@mixin position-absolute-center-x() {
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+// Position the element absolutely center vertical.
+@mixin position-absolute-center-y() {
+  position: absolute;
+  top: 50%;
+  transform: translateX(-50%);
+}
+
+// Similar to Bootstrap"s fixed top, but with optional position.
+@mixin position-top($position, $zindex: $zindex-fixed) {
+  left: 0;
+  position: $position;
+  right: 0;
+  top: 0;
+  z-index: $zindex;
+}
+
+// Render a circle.
+@mixin circle($width, $background-color: "") {
+  border-radius: 100%;
+  @include width-height($width);
+
+  @if $background-color != "" {
+    background-color: $background-color;
+  }
+}
+
+// Set the top property after the admin bar if itss present.
+@mixin top-after-admin-bar($offset: 0, $mobile-offset: 0) {
+  .admin-bar & {
+    top: 32px + $offset;
+
+    @media screen and (max-width: 782px) {
+      top: 46px + $mobile-offset;
+    }
+  }
+}
+
+// Background support for elements that use the background component.
+@mixin background-support {
+  position: relative;
+
+  > .container {
+    position: relative;
+  }
+}
+
+@mixin image-size($size: cover) {
+  height: 100%;
+  object-fit: $size;
+  width: 100%;
+}
+
+@mixin flex-center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin flex-start {
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+}
+
+@mixin flex-end {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@mixin center-block($width) {
+  max-width: $width;
+  @include margin-x(auto);
+}
+
+@mixin has-hover {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin clearfix {
+  &::after {
+      content: "";
+      display: table;
+      clear: both;
+  }
+}
+
+@mixin absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+// MEDIA QUERY MANAGER
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+ORDER: Base + typography > general layout + grid > page layout > components
+1em = 16px
+*/
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+      @media only screen and (max-width: 37.5em) { @content };    //600px
+  }
+  @if $breakpoint == tab-port {
+      @media only screen and (max-width: 56.25em) { @content };     //900px
+  }
+  @if $breakpoint == tab-land {
+      @media only screen and (max-width: 75em) { @content };    //1200px
+  }
+  @if $breakpoint == big-desktop {
+      @media only screen and (min-width: 112.5em) { @content };    //1800
+  }
+}

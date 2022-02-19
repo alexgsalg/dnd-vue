@@ -1,0 +1,65 @@
+:root {
+
+  // Fonts
+  --font-kanit: 'Kanit', sans-serif;
+  --font-ptsans: 'PT Sans', sans-serif;
+
+  // Colors
+  --color-white: #ffffff;
+  --color-light: #ffffffde;
+  --color-lighter: #fafafa;
+  --color-gray-lighter: #ffffff99;
+  --color-gray-light: #c4c4c4;
+  --color-gray-medium: #666666;
+  --color-gray-dark: #666666;
+  --color-blue-light: #8dd0ff;
+  --color-blue-medium: #29476d;
+  --color-blue-dark: #3f4b5b;
+  // --color-blue-darker: #343e4d;
+  --color-blue-darker: #2d333e;
+  --color-green-light: #0cd10c;
+  --color-green-medium: #2f9c0a;
+  --color-green-dark: #2a880b;
+  --color-green-darker: #2f6b1b;
+  --color-red-light: #ec2323;
+  --color-red-medium: #c92c2c;
+  --color-red-dark: #a31f1f;
+  --color-dark: #444444;
+  --color-darker: #20262e;
+  --color-darkest: #151515;
+
+  --shadow: rgba(0, 0, 0, 0.4);
+  --overlay: rgba(0, 0, 0, 0.6);
+
+  // Font size
+  --fontsize-1: 5rem;
+  --fontsize-2: 4rem;
+  --fontsize-3: 3rem;
+  --fontsize-4: 2.2rem;
+  --fontsize-5: 1.8rem;
+  --fontsize-6: 1.6rem;
+  --fontsize-7: 1.2rem;
+  --fontsize-default: 1.6rem;
+
+  // Breakpoints
+  --break-sm: 57.6rem;
+  --break-md: 76.8rem;
+  --break-lg: 99.2rem;
+  --break-xl: 120rem;
+  --break-xxl: 140rem;
+
+  // Gap
+  --gap-sm: 2rem;
+  --gap-md: 3rem;
+  --gap-lg: 6rem;
+
+  // Grid
+  --grid-width: 114rem;
+  --gutter-vertical: 6rem;
+  --gutter-vertical-small: 3rem;
+
+
+  // Transitions
+  --trs: 0.3s;
+  ---trs-slow: 0.5s;
+}
