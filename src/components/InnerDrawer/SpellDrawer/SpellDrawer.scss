@@ -1,4 +1,4 @@
-@import '../../sass/mixins.scss';
+@import '../../../sass/mixins.scss';
 
 .drawer {
   position: absolute;
@@ -17,6 +17,32 @@
   &.open {
     right: 0;
   }
+
+  &_body {
+    padding: 0.5rem 1.2rem;
+  }
+  
+  &_header {
+    padding: 1rem 1.5rem 1.5rem;
+    
+    & > div {
+      display: inline-block;
+      margin-bottom: var(--gap-sm);
+      color: var(--color-lighter);
+      font-size: var(--fontsize-6);
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+    
+    button {
+      padding: 0.5rem;
+      margin-right: var(--gap-sm);
+      transition: color ease var(--trs);
+      &:hover {
+        color: var(--color-red-dark);
+      }
+    }
+  }
 }
 .drawer_mask {
   position: absolute;
@@ -33,5 +59,21 @@
     opacity: 1;
     background-color: var(--overlay);
     pointer-events: unset;
+  }
+}
+
+.box {
+  margin-bottom: var(--gap-sm);
+  
+  h5{
+    margin-bottom: 0 !important;
+    display: inline-block;
+  }
+  &_inner {
+    margin-bottom: var(--gap-sm);
+
+    & p:last-child {
+      margin-bottom: 0.2rem;
+    }
   }
 }

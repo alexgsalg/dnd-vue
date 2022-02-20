@@ -21,6 +21,7 @@
   }
 
   & > .v-toolbar__content {
+    justify-content: space-between;
     align-items: stretch !important;
   }
 }

@@ -2,9 +2,13 @@
   <div class="drawer">
     <div class="drawer_body" :class="{ open: showDrawer }">
       <div class="drawer_header">
-        <span>Spells list</span>
+        <div>
+          <button @click="onCloseDrawer()">
+            <font-awesome-icon icon="fa-solid fa-angles-left" />
+          </button>
+          <span>Spells list</span>
+        </div>
         <h2>{{ this.dataToCard.name }}</h2>
-        <button @click="onCloseDrawer()">Close</button>
       </div>
       <!-- If Spells Data -->
       <spell-drawer :data="dataToCard" />

@@ -16,6 +16,7 @@
   box-shadow: -2px 0 4px 6px var(--shadow);
   opacity: 0;
   z-index: 100;
+  overflow: auto;
   transition: right ease-in-out var(--trs);
   
   &.open {
@@ -44,4 +45,18 @@
     background-color: var(--overlay);
     pointer-events: unset;
   }
+}
+
+.drawer_body::-webkit-scrollbar {
+  width: 1em;
+  margin-right: 5px;
+}
+
+.drawer_body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px transparent;
+}
+
+.drawer_body::-webkit-scrollbar-thumb {
+  background-color: var(--color-blue-dark);
+  outline: 1px solid var(--color-blue-dark);
 }
