@@ -6,7 +6,7 @@
           <button @click="onCloseDrawer()">
             <font-awesome-icon icon="fa-solid fa-angles-left" />
           </button>
-          <span>Spells list</span>
+          <span>Back to Spells list</span>
         </div>
         <h2>{{ this.dataToCard.name }}</h2>
       </div>

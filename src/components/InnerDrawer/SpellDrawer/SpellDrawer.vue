@@ -46,7 +46,7 @@
       <v-divider dark></v-divider>
     </div>
     
-    <v-row class="row mb-0 no_rowgap">
+    <v-row class="d-flex mx-0 no_rowgap">
       <div class="box mb-0 col-1-2" v-if="data.material">
         <h5>Materials needed:</h5>
         <div class="box_inner">
@@ -55,7 +55,7 @@
       </div>
       
       <div class="box mb-0 col-1-2" v-if="data.school">
-        <h5>Materials needed:</h5>
+        <h5>School:</h5>
         <div class="box_inner">
           <p>{{ data.school.name }}</p>
         </div>
@@ -63,7 +63,7 @@
     </v-row>
       <v-divider dark></v-divider>
     
-    <v-row class="pt-3 mb-5">
+    <v-row class="d-flex mx-0 pt-3 mb-5">
       <div class="col-1-4" v-if="data.level">
         <h5>Level to get:</h5>
         <p class="mb-0">Level {{ data.level }}</p>

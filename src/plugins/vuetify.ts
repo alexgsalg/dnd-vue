@@ -15,7 +15,7 @@ export default new Vuetify({
     customProperties: true,
     theme: { disable: true },
     icons: {
-      iconfont: 'faSvg',
+      iconfont: 'fas',
     },
   }
 });

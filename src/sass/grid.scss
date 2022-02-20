@@ -15,12 +15,12 @@
   &:not(:last-child) {
       margin-bottom: var(--gutter-vertical);
 
-      @include respond(tab-port) {
+      @include breakpoint(tab-port) {
           margin-bottom: var(--gutter-vertical-small);
       }
   }
   
-  @include respond(tab-port) {
+  @include breakpoint(tab-port) {
       max-width: 50rem;
       padding: 0 3rem;
   }
@@ -33,13 +33,13 @@
       &:not(:last-child) {
           // margin-right: var(--gap-md);
 
-          @include respond(tab-port) {
+          @include breakpoint(tab-port) {
               margin-right: 0;
               margin-bottom: var(--gutter-vertical-small);
           }
       }
 
-      @include respond(tab-port) {
+      @include breakpoint(tab-port) {
           width: 100% !important;
       }
   }

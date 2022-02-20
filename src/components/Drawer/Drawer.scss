@@ -1,33 +1,60 @@
 @import '../../sass/mixins.scss';
 
-// .drawer {
-// }
+.drawer {
 
-.drawer_body {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: -60vw;
-  width: 60vw;
-  height: 100%;
-  background-color: var(--color-darker);
-  border-left: 5px solid var(--color-red-dark);
-  // background-color: var(--color-white);
-  box-shadow: -2px 0 4px 6px var(--shadow);
-  opacity: 0;
-  z-index: 100;
-  overflow: auto;
-  transition: right ease-in-out var(--trs);
-  
-  &.open {
-    opacity: 1;
-    right: 0;
+  &_body {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: -60vw;
+    width: 60vw;
+    height: 100%;
+    max-width: 120rem;
+    padding: 0.5rem 1.2rem;
+    background-color: var(--color-darker);
+    border-left: 5px solid var(--color-red-dark);
+    // background-color: var(--color-white);
+    box-shadow: -2px 0 4px 6px var(--shadow);
+    opacity: 0;
+    z-index: 100;
+    overflow: auto;
     transition: right ease-in-out var(--trs);
-  }
 
-  h2, span {
-    color: var(--color-light);
+    @include breakpoint(phone) {
+      width: 100vw;
+      right: -100vw;
+      padding: 2rem;
+    }
+    
+    &.open {
+      opacity: 1;
+      right: 0;
+      transition: right ease-in-out var(--trs);
+    }
   }
+  
+  &_header {
+    padding: 1rem 1.5rem 1.5rem;
+    
+    & > div {
+      display: inline-block;
+      margin-bottom: var(--gap-sm);
+      color: var(--color-lighter);
+      font-size: var(--fontsize-6);
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+    
+    button {
+      padding: 0.5rem;
+      margin-right: var(--gap-sm);
+      transition: color ease var(--trs);
+      &:hover {
+        color: var(--color-red-dark);
+      }
+    }
+  }
+  
 }
 .drawer_mask {
   position: fixed;
@@ -60,3 +87,5 @@
   background-color: var(--color-blue-dark);
   outline: 1px solid var(--color-blue-dark);
 }
+
+// Breakpoint
