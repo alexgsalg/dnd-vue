@@ -13,7 +13,7 @@
       <v-card-title >{{ data.name }}</v-card-title>
     </div>
     <div class="card_footer">
-    <button @click="onCardClick()" class="primary btn">{{ btnMsg }}</button>
+    <button @click="onCardClick()" class="btn">{{ btnMsg }}</button>
     </div>
   </v-card>
 </template>

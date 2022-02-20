@@ -13,7 +13,7 @@
     <span
       class="drawer_mask"
       :class="{ open: showDrawer }"
-      @click="showDrawer = false"
+      @click="onCloseDrawer()"
     ></span>
   </div>
 </template>

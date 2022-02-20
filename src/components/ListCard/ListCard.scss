@@ -12,12 +12,13 @@
     @include flex-end();
 
     .btn {
-    padding: 0.5rem 1rem;
-    font-size: 1.6rem;
-    margin-top: 1.5rem;
-    color: var(--color-light) !important;
-    background-color: var(--color-blue-light) !important;
-    border-radius: 5px;
+      padding: 0.5rem;
+      font-size: 1.6rem;
+      color: var(--color-red-medium) !important;
+      background-color: transparent !important;
+      font-weight: 500;
+      border-radius: 5px;
+      letter-spacing: 0.05rem !important;
     }
   }
   &_img {
