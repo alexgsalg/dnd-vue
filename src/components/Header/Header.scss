@@ -1,9 +1,8 @@
-@import '../../assets/sass/mixins.scss';
+@import '../../sass/mixins.scss';
 
 .header {
   @include flex-between();
   align-items: stretch;
-  background-color: var(--color-blue-dark);
   @include padding-x(2rem);
   
   &_logo {
@@ -12,35 +11,44 @@
     
     & > h1 {
       font-size: var(--fontsize-1);
-      color: var(--color-lighter);
+      color: var(--color-light) !important;
     }
   }
   
   &_nav {
     @include flex-end();
     font-size: var(--fontsize-5);
-    
-    a {
-      @include flex-center();
-      height: 100%;
-      @include padding-x(2rem);
-      color: var(--color-lighter);
-      letter-spacing: 0.2rem;
-      border-bottom: 2px solid transparent;
-      transition: all var(--trs) ease-in-out;
-      
-      @include has-hover() {
-        background-color: var(--color-green-darker);
-        color: var(--color-lighter);
-        border-bottom: 2px solid var(--color-lighter);
-      }
-    }
-
-    .router-link-active {
-      background-color: var(--color-green-darker);
-      color: var(--color-lighter);
-      border-bottom: 2px solid var(--color-lighter);
-    }
   }
 
+  & > .v-toolbar__content {
+    align-items: stretch !important;
+  }
+}
+.nav_link {
+  @include flex-center();
+  height: 100%;
+  @include padding-x(2rem);
+  color: var(--color-light) !important;
+  letter-spacing: 0.2rem;
+  transition: all var(--trs) ease-in-out;
+  
+  @include has-hover() {
+    background-color: var(--color-red-darker);
+    color: var(--color-lighter);
+  }
+
+  &.router-link-active {
+    position: relative;
+    color: var(--color-green-darker);
+
+    &::after {
+      content: '';
+      background-color: var(--color-red-darker);
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+    }
+  }
 }

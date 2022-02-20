@@ -8,7 +8,6 @@ import Roleplay from '../views/Roleplay/Roleplay.vue';
 
 Vue.use(VueRouter);
 
-
 const routes: Array<RouteConfig> = [
   {
     path: '/',

@@ -1,9 +1,8 @@
-
 export interface DefRequest {
-  data: DefRes
+  data: DefRes;
 }
 
 export interface DefRes {
-  count: number,
-  results: Record<string, unknown>
+  count: number;
+  results: Record<string, unknown>;
 }

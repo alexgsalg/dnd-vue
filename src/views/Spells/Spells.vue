@@ -1,8 +1,12 @@
 <template>
-  <main>
-    <div class="container">
-      <h2>Spells list</h2>
-      <p>Count: {{ count }}</p>
+  <div>
+    <PageHeader 
+      :title="'Spells List'" 
+      :page="'spells'"
+      :spanType="'count'">
+      <span>({{ count }})</span>
+    </PageHeader>
+    <v-container>
       <div class="row">
         <list-card
           v-for="item of results"
@@ -12,36 +16,34 @@
         >
         </list-card>
       </div>
-    </div>
-      <!-- v-if="showDrawer"  -->
-    <Drawer 
-      :dataToCard="dataToCard" 
-      :showDrawer="showDrawer"
-      @onCloseDrawer="closeDrawer()" 
-    />
-  </main>
+
+      <Transition name="fade">
+        <Drawer
+          :dataToCard="dataToCard"
+          :showDrawer="showDrawer"
+          @onCloseDrawer="closeDrawer()"
+        />
+      </Transition>
+    </v-container>
+  </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
+import PageHeader from '../../components/PageHeader/PageHeader.vue';
 import ListCard from '../../components/ListCard/ListCard.vue';
 import Drawer from '../../components/Drawer/Drawer.vue';
 
 import { getAllSpells } from '../../services/spells';
 import { DefRes } from '../../models/response';
-
-type CardData = {
-  id: string;
-  name: string;
-  url: string;
-  type: string;
-};
+import { CardData } from '../../models/cards';
 
 export default Vue.extend({
-  name: 'Spells',
+  name: "Spells",
   components: {
+    PageHeader,
     ListCard,
-    Drawer
+    Drawer,
   },
   data() {
     return {
@@ -50,25 +52,26 @@ export default Vue.extend({
       spellList: {} as DefRes,
       results: [],
       count: Number,
-      showDrawer: false
+      showDrawer: false,
     };
   },
 
   methods: {
     cardClicked(item): void {
       this.dataToCard = {
-        ...item, type: 'spell' 
+        ...item,
+        type: "spell",
       };
-      this.showDrawer = true
+      this.showDrawer = true;
     },
 
     closeDrawer() {
-      this.showDrawer = false
+      this.showDrawer = false;
     },
 
     addType(spell): [] {
-      return spell.map((s) => ({ ...s, type: 'spell' }));
-    }
+      return spell.map((s) => ({ ...s, type: "spell" }));
+    },
   },
 
   mounted() {
@@ -78,9 +81,9 @@ export default Vue.extend({
         this.results = this.addType(data.results);
         this.count = data.count;
       });
-  }
+  },
 });
 </script>
 <style lang="scss">
-@import './Spells.scss';
+@import "./Spells.scss";
 </style>

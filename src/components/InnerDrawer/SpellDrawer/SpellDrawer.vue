@@ -10,27 +10,26 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue from "vue";
 
 export default Vue.extend({
-  name: 'Drawer',
+  name: "Drawer",
   props: {
     data: Object,
   },
   data() {
     return {
       loading: false,
-    }
+    };
   },
 
   methods: {
-    // 
+    //
   },
 
   mounted() {
     // getAllModal().then((response) => this.spellList = response.data)
   },
-
 });
 </script>
 <style lang="scss">

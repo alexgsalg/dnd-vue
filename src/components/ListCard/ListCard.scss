@@ -1,1 +1,35 @@
-@import '../../assets/sass/mixins.scss';
+@import '../../sass/mixins.scss';
+
+.card {
+  background-color: var(--color-blue-dark) !important;
+  border-left: 5px solid var(--color-red-dark) !important;
+  padding: 1rem 1.5rem;
+
+  &_header {
+    @include flex-start();
+  }
+  &_footer {
+    @include flex-end();
+
+    .btn {
+    padding: 0.5rem 1rem;
+    font-size: 1.6rem;
+    margin-top: 1.5rem;
+    color: var(--color-light) !important;
+    background-color: var(--color-blue-light) !important;
+    border-radius: 5px;
+    }
+  }
+  &_img {
+    @include flex-center();
+  }
+
+}
+
+.v-card__title {
+  display: inline-block !important;
+  font-size: 2.25rem !important;
+  color: var(--color-white);
+  font-weight: 300 !important;
+  letter-spacing: 0.1rem !important;
+}

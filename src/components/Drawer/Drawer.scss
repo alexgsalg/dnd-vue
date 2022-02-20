@@ -1,21 +1,27 @@
-@import '../../assets/sass/mixins.scss';
+@import '../../sass/mixins.scss';
 
-.drawer {
-  position: absolute;
+// .drawer {
+// }
+
+.drawer_body {
+  position: fixed;
   top: 0;
   bottom: 0;
   right: -60vw;
   width: 60vw;
-  height: 100vh;
+  height: 100%;
   background-color: var(--color-darker);
   border-left: 5px solid var(--color-red-dark);
   // background-color: var(--color-white);
   box-shadow: -2px 0 4px 6px var(--shadow);
+  opacity: 0;
   z-index: 100;
   transition: right ease-in-out var(--trs);
   
   &.open {
+    opacity: 1;
     right: 0;
+    transition: right ease-in-out var(--trs);
   }
 
   h2, span {
@@ -23,7 +29,7 @@
   }
 }
 .drawer_mask {
-  position: absolute;
+  position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
