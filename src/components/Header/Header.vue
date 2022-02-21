@@ -1,14 +1,15 @@
 <template>
   <v-app-bar app dark class="header">
     <div class="header_logo">
-      <v-img
+      <!-- <v-img
         alt="Vuetify Logo"
         class="shrink mr-2"
         contain
         src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
         transition="scale-transition"
         width="40"
-      />
+      /> -->
+      <h1 class="header__title">D<span>&</span>D Vue</h1>
     </div>
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down header_nav">

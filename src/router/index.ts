@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-import Home from '../views/Home.vue';
+import Home from '../views/Home/Home.vue';
 import Spells from '../views/Spells/Spells.vue';
 import Monsters from '../views/Monsters/Monsters.vue';
 import Characters from '../views/Characters/Characters.vue';

@@ -6,20 +6,18 @@ h3,
 h4,
 h5,
 h6 {
-	clear: both;
-  font-family: var(--font-kanit);
   margin: 0;
+  font-family: var(--font-raleway);
+  font-weight: 500;
   color: var(--color-light);
+  clear: both;
 }
 
 h1 {
-  margin-bottom: 2.1rem;
   font-size: var(--fontsize-1);
   line-height: 6.5rem;
-  @include font-size-line-height(var(--fontsize-1), 65px);
   letter-spacing: 0;
   text-transform: uppercase;
-  
 }
 
 h2 {

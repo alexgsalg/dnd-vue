@@ -1,0 +1,14 @@
+@import '../../sass/buttons.scss';
+
+.btn {
+  @extend .btn;
+  
+  svg.icon {
+    margin-right: 1rem;
+  }
+}
+
+.v-card__subtitle {
+  font-size: var(--fontsize-7) !important;
+  margin-top: 0 !important;
+}
