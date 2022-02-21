@@ -47,14 +47,14 @@
     </div>
     
     <v-row class="d-flex mx-0 no_rowgap">
-      <div class="box mb-0 col-1-2" v-if="data.material">
+      <div class="box mb-0 pl-0 col-6" v-if="data.material">
         <h5>Materials needed:</h5>
         <div class="box_inner">
           <p>{{ data.material }}</p>
         </div>
       </div>
       
-      <div class="box mb-0 col-1-2" v-if="data.school">
+      <div class="box mb-0 pl-0 col-6" v-if="data.school">
         <h5>School:</h5>
         <div class="box_inner">
           <p>{{ data.school.name }}</p>
@@ -64,31 +64,31 @@
       <v-divider dark></v-divider>
     
     <v-row class="d-flex mx-0 pt-3 mb-5">
-      <div class="col-1-4" v-if="data.level">
+      <div class="col-3 pl-0" v-if="data.level">
         <h5>Level to get:</h5>
         <p class="mb-0">Level {{ data.level }}</p>
       </div>
-      <div class="col-1-4" v-if="data.range">
+      <div class="col-3 pl-0" v-if="data.range">
         <h5>Spell range:</h5>
         <p class="mb-0">{{ data.range }}</p>
       </div>
-      <div class="col-1-4" v-if="data.ritual">
+      <div class="col-3 pl-0" v-if="data.ritual">
         <h5>Need Ritual:</h5>
         <p class="mb-0">{{ data.ritual }}</p>
       </div>
-      <div class="col-1-4" v-if="data.duration">
+      <div class="col-3 pl-0" v-if="data.duration">
         <h5>Duration:</h5>
         <p class="mb-0">{{ data.duration }}</p>
       </div>
-      <div class="col-1-4">
+      <div class="col-3 pl-0">
         <h5>Concentration:</h5>
         <p class="mb-0">{{ data.concentration ? 'Yes' : 'No' }}</p>
       </div>
-      <div class="col-1-4" v-if="data.casting_time">
+      <div class="col-3 pl-0" v-if="data.casting_time">
         <h5>Casting time:</h5>
         <p class="mb-0">{{ data.casting_time }}</p>
       </div>
-      <div class="col-1-4" v-if="data.components">
+      <div class="col-3 pl-0" v-if="data.components">
         <h5>Components:</h5>
         <p class="mb-0">
           <span v-for="(text, i) of data.components" :key="i">

@@ -9,12 +9,15 @@
     <v-container>
       <div class="row">
         <list-card
+          :lg="4"
+          :md="6"
+          :sm="12"
           v-for="item of results"
           :key="item.index"
           :data="item"
           @onCardClicked="cardClicked($event)"
-        >
-        </list-card>
+          :sktLoading="sktLoading"
+        ></list-card>
       </div>
 
       <Transition name="fade">
@@ -53,6 +56,7 @@ export default Vue.extend({
       results: [],
       count: Number,
       showDrawer: false,
+      sktLoading: true,
     };
   },
 
@@ -80,6 +84,9 @@ export default Vue.extend({
       .then((data) => {
         this.results = this.addType(data.results);
         this.count = data.count;
+        setTimeout(() => {
+          this.sktLoading = false
+        }, 2000) 
       });
   },
 });

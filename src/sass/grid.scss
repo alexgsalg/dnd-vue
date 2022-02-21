@@ -5,16 +5,17 @@
   margin: 0 auto !important;
   @include flex-start();
   flex-wrap: wrap;
-  gap: var(--gap-md);
+//   gap: var(--gap-md);
   
   &.no_rowgap {
     row-gap: 0;
+    padding: initial !important;
   }
 
 
   &:not(:last-child) {
       margin-bottom: var(--gutter-vertical);
-
+      
       @include breakpoint(tab-port) {
           margin-bottom: var(--gutter-vertical-small);
       }

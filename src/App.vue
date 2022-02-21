@@ -2,7 +2,12 @@
   <v-app>
     <Header />
     <v-main>
-      <router-view />
+      <router-view v-slot="{ Component }">
+        <transition name="fade">
+          <component :is="Component" />
+        </transition>
+      </router-view>
+      <!-- <router-view /> -->
     </v-main>
   </v-app>
 </template>

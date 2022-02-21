@@ -1,21 +1,41 @@
 <template>
-  <v-card elevation="2" outlined class="col-1-3 card">
-    <div class="card_header">
-      <!-- Icon -->
-      <div class="card_img">
-        <v-img
-          contain
-          max-height="35"
-          max-width="40"
-          src="../../assets/img/book.png"
-        ></v-img>
+  <v-col 
+    :cols="cols"
+    :sm="sm"
+    :md="md"
+    :lg="lg"
+  >
+    <v-skeleton-loader
+      :transition-group="sktTransition"
+      height="108"
+      type="list-item-avatar-two-line, card"
+      dark
+      v-if="sktLoading"
+    >
+    </v-skeleton-loader>
+    <v-card 
+      elevation="2" 
+      outlined 
+      class="card"
+      v-else
+      >
+      <div class="card_header">
+        <!-- Icon -->
+        <div class="card_img">
+          <v-img
+            contain
+            max-height="35"
+            max-width="40"
+            src="../../assets/img/book.png"
+          ></v-img>
+        </div>
+        <v-card-title >{{ data.name }}</v-card-title>
       </div>
-      <v-card-title >{{ data.name }}</v-card-title>
-    </div>
-    <div class="card_footer">
-    <button @click="onCardClick()" class="btn">{{ btnMsg }}</button>
-    </div>
-  </v-card>
+      <div class="card_footer">
+      <button @click="onCardClick()" class="btn">{{ btnMsg }}</button>
+      </div>
+    </v-card>
+  </v-col>
 </template>
 
 <script lang="ts">
@@ -34,17 +54,22 @@ export default Vue.extend({
   props: {
     data: {
       type: Object
-    }
+    },
+    sktLoading: Boolean,
+    cols: Number,
+    lg: Number,
+    md: Number,
+    sm: Number
   },
   data() {
     return {
       btnMsg: MessageType[this.data.type],
-      formatData: Object
+      formatData: Object,
+      sktTransition: "scale-transition",
     };
   },
 
   mounted() {
-    //
     getSpell(this.data.index)
       .then((resp) => resp.data)
       .then((data) => (this.formatData = data));

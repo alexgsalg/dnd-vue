@@ -1,30 +1,30 @@
 <template>
-  <v-toolbar dark cklass class="header">
-      <div class="header_logo">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-      </div>
-      <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-sm-and-down header_nav">
-        <router-link class="nav_link"
-          v-for="(item, i) of navList"
-          :key="i"
-          :to="item.route"
-          exact
-        >
-          <font-awesome-icon :icon="item.icon" class="icon alt"/>
-          {{item.name}}
-        </router-link>
-      </v-toolbar-items>
+  <v-app-bar app dark class="header">
+    <div class="header_logo">
+      <v-img
+        alt="Vuetify Logo"
+        class="shrink mr-2"
+        contain
+        src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+        transition="scale-transition"
+        width="40"
+      />
+    </div>
+    <v-spacer></v-spacer>
+    <v-toolbar-items class="hidden-sm-and-down header_nav">
+      <router-link class="nav_link"
+        v-for="(item, i) of navList"
+        :key="i"
+        :to="item.route"
+        exact
+      >
+        <font-awesome-icon :icon="item.icon" class="icon alt"/>
+        {{item.name}}
+      </router-link>
+    </v-toolbar-items>
 
-      <v-app-bar-nav-icon @click="drawer = true" class="hidden-md-and-up"></v-app-bar-nav-icon>
-      <v-navigation-drawer
+    <v-app-bar-nav-icon @click="drawer = true" class="hidden-md-and-up"></v-app-bar-nav-icon>
+    <v-navigation-drawer
       v-model="drawer"
       absolute
       temporary
@@ -52,8 +52,7 @@
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
-    </v-toolbar>
-
+  </v-app-bar>
 </template>
 
 <script lang="ts">
