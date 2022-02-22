@@ -1,0 +1,10 @@
+@import './mixins.scss';
+
+.btn {
+  font-size: var(--fontsize-7) !important;
+    padding: 1rem 1.2rem !important;
+    background-color: var(--color-red-darker) !important;
+    color: var(--color-light) !important;
+    letter-spacing: 0.2rem;
+    transition: all var(--trs) ease-in-out;
+}
