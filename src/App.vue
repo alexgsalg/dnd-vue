@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app :class="{ open: drawerState }">
     <Header />
     <v-main>
       <router-view v-slot="{ Component }">
@@ -23,7 +23,12 @@ export default Vue.extend({
   },
   data: () => ({
     //
-  })
+  }),
+  computed: {
+    drawerState(): boolean  {
+      return this.$store.getters.getDrawerState
+    },
+  },
 });
 </script>
 

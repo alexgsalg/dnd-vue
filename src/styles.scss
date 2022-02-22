@@ -23,6 +23,11 @@ body{
     list-style-type: none;
     line-height: 1.4;
     background-color: var(--color-darker);
+
+    &.drawer-open {
+        height: 100vh;
+        overflow-y: hidden;
+    }
 }
 body::-webkit-scrollbar {
     width: 1em;

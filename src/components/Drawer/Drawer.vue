@@ -1,6 +1,6 @@
 <template>
-  <div class="drawer">
-    <div class="drawer_body" :class="{ open: showDrawer }">
+  <div class="drawer" :class="{ open: showDrawer }">
+    <div class="drawer_body">
       <div class="drawer_header">
         <div>
           <button @click="onCloseDrawer()">
@@ -16,7 +16,6 @@
     <!-- Mask -->
     <span
       class="drawer_mask"
-      :class="{ open: showDrawer }"
       @click="onCloseDrawer()"
     ></span>
   </div>
@@ -37,18 +36,24 @@ export default Vue.extend({
     return {
       loading: false,
       title: this.dataToCard.name,
+      body: document.body,
     };
   },
 
+  computed: {
+    drawerState(): boolean  {
+      return this.$store.state.drawerState
+    },
+  },
   methods: {
     onCloseDrawer() {
+      this.$store.commit('setDrawerState', false)
       this.$emit("onCloseDrawer", this.showDrawer);
     },
   },
 
   mounted() {
-    console.log(this.showDrawer);
-    // getAllModal().then((response) => this.spellList = response.data)
+    //
   },
 });
 </script>

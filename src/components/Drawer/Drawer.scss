@@ -1,7 +1,6 @@
 @import '../../sass/mixins.scss';
 
 .drawer {
-
   &_body {
     position: fixed;
     top: 0;
@@ -13,9 +12,7 @@
     padding: 0.5rem 1.2rem;
     background-color: var(--color-darker);
     border-left: 5px solid var(--color-red-dark);
-    // background-color: var(--color-white);
     box-shadow: -2px 0 4px 6px var(--shadow);
-    opacity: 0;
     z-index: 100;
     overflow: auto;
     transition: right ease-in-out var(--trs);
@@ -24,12 +21,6 @@
       width: 100vw;
       right: -100vw;
       padding: 2rem;
-    }
-    
-    &.open {
-      opacity: 1;
-      right: 0;
-      transition: right ease-in-out var(--trs);
     }
   }
   
@@ -62,17 +53,11 @@
   width: 100%;
   height: 100%;
   background-color: transparent;
-  opacity: 0;
   transition: all ease-in-out var(--trs);
   z-index: 90;
   pointer-events: none;
-  
-  &.open {
-    opacity: 1;
-    background-color: var(--overlay);
-    pointer-events: unset;
-  }
 }
+
 
 .drawer_body::-webkit-scrollbar {
   width: 1em;
@@ -86,6 +71,17 @@
 .drawer_body::-webkit-scrollbar-thumb {
   background-color: var(--color-blue-dark);
   outline: 1px solid var(--color-blue-dark);
+}
+
+.drawer.open {
+  .drawer_mask {
+    background-color: var(--overlay);
+    pointer-events: initial;
+  }
+  .drawer_body {
+    right: 0;
+    transition: right ease-in-out var(--trs);
+  }
 }
 
 // Breakpoint

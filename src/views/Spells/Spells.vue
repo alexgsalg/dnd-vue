@@ -4,15 +4,16 @@
       :title="'Spells List'" 
       :page="'spells'"
       :spanType="'count'">
-      <span>({{ count }})</span>
+      <span>({{ this.sktLoading ? 'Calculating' : spells.count }})</span>
     </PageHeader>
+    <!-- {{spells}} -->
     <v-container>
       <div class="row">
         <list-card
           :lg="4"
           :md="6"
           :sm="12"
-          v-for="item of results"
+          v-for="item of spells.results"
           :key="item.index"
           :data="item"
           @onCardClicked="cardClicked($event)"
@@ -60,6 +61,28 @@ export default Vue.extend({
     };
   },
 
+  computed: {
+    spells() {
+      return this.$store.state.spells
+    }
+  },
+
+  mounted() {
+    this.$store.dispatch("getSpellsAction");
+    setTimeout(() => {
+      this.sktLoading = false
+    }, 2000);
+    // getAllSpells()
+    //   .then((response) => response.data)
+    //   .then((data) => {
+    //     this.results = this.addType(data.results);
+    //     this.count = data.count;
+    //     setTimeout(() => {
+    //       this.sktLoading = false
+    //     }, 2000) 
+    //   });
+  },
+
   methods: {
     cardClicked(item): void {
       this.dataToCard = {
@@ -67,6 +90,7 @@ export default Vue.extend({
         type: "spell",
       };
       this.showDrawer = true;
+      this.$store.commit('setDrawerState', true)
     },
 
     closeDrawer() {
@@ -76,18 +100,6 @@ export default Vue.extend({
     addType(spell): [] {
       return spell.map((s) => ({ ...s, type: "spell" }));
     },
-  },
-
-  mounted() {
-    getAllSpells()
-      .then((response) => response.data)
-      .then((data) => {
-        this.results = this.addType(data.results);
-        this.count = data.count;
-        setTimeout(() => {
-          this.sktLoading = false
-        }, 2000) 
-      });
   },
 });
 </script>
