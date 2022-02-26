@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="box">
-      <h5>Description:</h5>
+      <h4>Description:</h4>
       <div class="box_inner">
         <p v-for="(text, i) of data.desc" :key="i">
           {{ text }}
@@ -27,6 +27,28 @@
           <span v-for="(text, i) of data.classes" :key="i">
             <template v-if="i > 0">,</template>
             {{ text.name }}
+          </span>
+        </p>
+      </div>
+      <v-divider dark></v-divider>
+    </div>
+    
+    <div class="box" v-if="data.damage">
+      <h5>Damage:</h5>
+      <div class="box_inner">
+        <p>{{ data.damage.damage_type.name }}</p>
+        <p v-if="data.damage.damage_at_character_level">
+          <strong>Damage at character level</strong><br>
+          <span v-for="(value, name, i) of data.damage.damage_at_character_level" :key="i">
+            <template v-if="i > 0"> | </template>
+            <strong>Level {{ name }}</strong>: {{ value }} 
+          </span>
+        </p>
+        <p v-if="data.damage.damage_at_slot_level">
+          <strong>Damage at slot level</strong><br>
+          <span v-for="(value, name, i) of data.damage.damage_at_slot_level" :key="i">
+            <template v-if="i > 0"> | </template>
+            <strong>Level {{ name }}</strong>: {{ value }} 
           </span>
         </p>
       </div>
@@ -113,10 +135,6 @@ export default Vue.extend({
     return {
       loading: false,
     };
-  },
-
-  methods: {
-    //
   },
 
   mounted() {

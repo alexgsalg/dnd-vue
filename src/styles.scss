@@ -17,12 +17,17 @@
 }
 html {
     font-size: 62.5% !important; //1 rem = 10px; 10px/16px = 62.5%
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Raleway', sans-serif;
 }
 body{
     list-style-type: none;
     line-height: 1.4;
     background-color: var(--color-darker);
+
+    &.drawer-open {
+        height: 100vh;
+        overflow-y: hidden;
+    }
 }
 body::-webkit-scrollbar {
     width: 1em;
