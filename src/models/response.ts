@@ -3,6 +3,7 @@ export interface DefRequest {
 }
 
 export interface DefRes {
-  count: number;
-  results: Record<string, unknown>;
+  results: [] | {};
+  count: number | NumberConstructor;
+  // results: Record<any>;
 }

@@ -24,12 +24,13 @@
         <div class="card_img">
           <v-img
             contain
-            max-height="35"
-            max-width="40"
+            max-height="100%"
+            max-width="45%"
             src="../../assets/img/book.png"
           ></v-img>
         </div>
         <v-card-title >{{ data.name }}</v-card-title>
+        <v-card-subtitle >{{ data.desc[0] | subtitleFormat }}</v-card-subtitle>
       </div>
       <div class="card_footer">
       <button @click="onCardClick()" class="btn">{{ btnMsg }}</button>
@@ -40,7 +41,6 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { getSpell } from '../../services/spells';
 
 enum MessageType {
   'spell' = 'What it does?',
@@ -65,22 +65,30 @@ export default Vue.extend({
     return {
       btnMsg: MessageType[this.data.type],
       formatData: Object,
+      subtitle: String,
       sktTransition: "scale-transition",
     };
   },
 
   mounted() {
-    getSpell(this.data.index)
-      .then((resp) => resp.data)
-      .then((data) => (this.formatData = data));
+    // 
   },
 
   methods: {
     async onCardClick(): Promise<void> {
-      // console.log(this.formatData)
-      this.$emit('onCardClicked', this.formatData);
+      console.log(this.$props.data)
+      this.$emit('onCardClicked', this.$props.data);
     }
-  }
+  },
+  filters: {
+      subtitleFormat(desc: string): any {
+        if (desc && desc.length > 70) {
+          desc = desc.substring(0, 70) + '...';
+          return desc
+        }
+        return desc
+      }
+    },
 });
 </script>
 <style lang="scss">

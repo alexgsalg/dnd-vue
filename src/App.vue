@@ -29,12 +29,29 @@ export default Vue.extend({
       return this.$store.getters.getDrawerState
     },
   },
+
+  mounted() {
+    this.$store.dispatch("getSpellsAction");
+  }
 });
 </script>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Raleway:wght@100;300;400;500;600;700&display=swap');
-@import './sass/reset.scss';
-@import './styles.scss';
+@font-face {
+  font-family: "Blaak";
+  font-weight: 400;
+  font-style: normal;
+  font-display: auto;
+  src: local("Blaak"),
+   url('/fonts/BlaakRegular.ttf') format("ttf");
+}
+@font-face {
+  font-family: "Blaak";
+  font-weight: 700;
+  font-style: normal;
+  font-display: auto;
+  src: local("Blaak"),
+   url('/fonts/BlaakBold.ttf') format("ttf");
+}
 
 </style>

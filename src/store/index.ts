@@ -10,9 +10,10 @@ export default new Vuex.Store({
   state: {
     elBody: document.body,
     drawerState: false,
-    spells: {results: [], count: Number},
-    characters: [],
-    monsters: []
+    spells: {results: [], count: Number, loading: false},
+    // spells: [],
+    characters: {results: [], count: Number},
+    monsters: {results: [], count: Number}
   },
   getters,
   mutations: {
@@ -23,20 +24,31 @@ export default new Vuex.Store({
       } else {
         state.elBody.classList.remove('drawer-open');
       }
-      console.log('change', state.drawerState)
     },
     SET_SPELLS(state, spells) {
-      state.spells = {
-        results: spells.results.map((s) => ({ ...s, type: "spell" })),
-        count: spells.count
-      }
+      state.spells = spells;
     }
   },
   actions: {
     getSpellsAction({ commit }) {
-      getAllSpells().then(response => {
-        commit('SET_SPELLS', response.data)
-      })
+      if(localStorage.spellList) { 
+        // Get LocalStorage
+        const results = JSON.parse(localStorage.getItem( 'spellList') );
+        commit('SET_SPELLS', results);
+      } else {
+        getAllSpells()
+          .then((response) => response.data)
+          .then((data) => {
+            const results =  {
+              results: data.results.map((s) => ({ ...s, type: "spell" })),
+              count: data.count,
+              loading: false
+            }
+            commit('SET_SPELLS', results);
+            // Set LocalStorage
+            localStorage.setItem('spellList', JSON.stringify( results ));
+          });
+      }
     }
   },
   modules: {}

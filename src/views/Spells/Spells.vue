@@ -4,9 +4,8 @@
       :title="'Spells List'" 
       :page="'spells'"
       :spanType="'count'">
-      <span>({{ this.sktLoading ? 'Calculating' : spells.count }})</span>
+      <span>({{ sktLoading ? 'Calculating' : spells.count }})</span>
     </PageHeader>
-    <!-- {{spells}} -->
     <v-container>
       <div class="row">
         <list-card
@@ -38,8 +37,6 @@ import PageHeader from '../../components/PageHeader/PageHeader.vue';
 import ListCard from '../../components/ListCard/ListCard.vue';
 import Drawer from '../../components/Drawer/Drawer.vue';
 
-import { getAllSpells } from '../../services/spells';
-import { DefRes } from '../../models/response';
 import { CardData } from '../../models/cards';
 
 export default Vue.extend({
@@ -53,9 +50,6 @@ export default Vue.extend({
     return {
       loading: false,
       dataToCard: ({} as CardData) || {},
-      spellList: {} as DefRes,
-      results: [],
-      count: Number,
       showDrawer: false,
       sktLoading: true,
     };
@@ -68,19 +62,7 @@ export default Vue.extend({
   },
 
   mounted() {
-    this.$store.dispatch("getSpellsAction");
-    setTimeout(() => {
-      this.sktLoading = false
-    }, 2000);
-    // getAllSpells()
-    //   .then((response) => response.data)
-    //   .then((data) => {
-    //     this.results = this.addType(data.results);
-    //     this.count = data.count;
-    //     setTimeout(() => {
-    //       this.sktLoading = false
-    //     }, 2000) 
-    //   });
+    if (!this.spells.loading) this.sktLoading = false
   },
 
   methods: {
@@ -97,12 +79,16 @@ export default Vue.extend({
       this.showDrawer = false;
     },
 
-    addType(spell): [] {
-      return spell.map((s) => ({ ...s, type: "spell" }));
-    },
+    // addType(spell): [] {
+    //   return spell.map((s) => ({ ...s, type: "spell" }));
+    // },
   },
 });
 </script>
 <style lang="scss">
 @import "./Spells.scss";
 </style>
+
+function mounted() {
+  throw new Error('Function not implemented.');
+}
