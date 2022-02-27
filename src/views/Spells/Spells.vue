@@ -7,12 +7,29 @@
       <span>({{ sktLoading ? 'Calculating' : spells.count }})</span>
     </PageHeader>
     <v-container>
+      <v-form class="searchform">
+        <h3 class="searchform__title">Search the spell you need</h3>
+        <fieldset class="searchform__field">
+          <legend></legend>
+          <input 
+            type="text" 
+            class="searchform__input"
+            v-model="filter"
+            placeholder="Search the spell name...">
+            <font-awesome-icon icon="fa-solid fa-magnifying-glass" class="searchform__icon alt"/>
+        </fieldset>
+        <!-- <v-text-field
+          class="searchform__input"
+          v-model="filter"
+          label="Spell name..."
+        ></v-text-field> -->
+      </v-form>
       <div class="row">
         <list-card
           :lg="4"
           :md="6"
           :sm="12"
-          v-for="item of spells.results"
+          v-for="item of filterSpells"
           :key="item.index"
           :data="item"
           @onCardClicked="cardClicked($event)"
@@ -48,8 +65,10 @@ export default Vue.extend({
   },
   data() {
     return {
+      filter: '',
       loading: false,
       dataToCard: ({} as CardData) || {},
+      // filterSpells: {},
       showDrawer: false,
       sktLoading: true,
     };
@@ -58,6 +77,11 @@ export default Vue.extend({
   computed: {
     spells() {
       return this.$store.state.spells
+    },
+    filterSpells() {
+      return this.spells.results.filter(spell => {
+        return spell.name.toLowerCase().includes(this.filter.toLowerCase())
+      })
     }
   },
 
