@@ -45,6 +45,7 @@ export default new Vuex.Store({
               loading: false
             }
             commit('SET_SPELLS', results);
+            console.log(results)
             // Set LocalStorage
             localStorage.setItem('spellList', JSON.stringify( results ));
           });

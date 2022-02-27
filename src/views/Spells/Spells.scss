@@ -1,5 +1,52 @@
 @import '../../sass/grid.scss';
 
+.searchform {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0 2rem 2rem;
+  font-family: 'Raleway' !important;
+  border-bottom: 3px solid var(--color-blue-darker);
+
+  &__title {
+    margin-bottom: 0 !important;
+    font-family: inherit;
+    font-weight: 400;
+  }
+  
+  &__field {
+    display: flex;
+    max-width: 600px;
+    width: 50%;
+    min-width: 300px;
+    background-color: var(--color-blue-dark);
+    border-radius: 5px;
+  }
+
+  &__input {
+    width: 100%;
+    font-size: var(--fontsize-6);
+    color: var(--color-light);
+    padding: 1.6rem;
+    letter-spacing: 0.15em;
+    
+    &::placeholder {
+      color: var(--color-gray-lighter);
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__icon {
+    padding: 1.6rem;
+    font-size: 2rem;
+    color: var(--color-gray-lighter);
+  }
+}
+
+
 // Transitions
 .fade-enter-active,
 .fade-leave-active {
