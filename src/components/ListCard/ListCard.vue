@@ -31,8 +31,9 @@
           ></v-img>
         </div>
         <v-card-title >{{ data.name }}</v-card-title>
-        <v-card-subtitle v-if="data.type === 'spells'">{{ data.desc[0] | subtitleFormat }}</v-card-subtitle>
+        <v-card-subtitle v-if="data.type === 'spell'">{{ data.desc[0] | subtitleFormat }}</v-card-subtitle>
         <v-card-subtitle v-else><span>Alignment: </span>{{ data.alignment }}</v-card-subtitle>
+        
       </div>
       <div class="card_footer">
       <button @click="onCardClick()" class="btn">{{ btnMsg }}</button>
