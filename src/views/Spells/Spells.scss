@@ -5,17 +5,26 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  gap: 3rem;
   margin-bottom: 1rem;
   padding: 0 2rem 2rem;
   font-family: 'Raleway' !important;
   border-bottom: 3px solid var(--color-blue-darker);
-
+  
+  @include breakpoint(phone) {
+    margin-bottom: 2rem;
+  }
+  
   &__title {
     margin-bottom: 0 !important;
     font-family: inherit;
     font-weight: 400;
+    
+    @include breakpoint(phone) {
+      width: -webkit-fill-available;
+    }
   }
-  
+    
   &__field {
     display: flex;
     max-width: 600px;
@@ -23,8 +32,13 @@
     min-width: 300px;
     background-color: var(--color-blue-dark);
     border-radius: 5px;
+    
+    @include breakpoint(phone) {
+      width: 100%;
+    }
   }
-
+  
+    
   &__input {
     width: 100%;
     font-size: var(--fontsize-6);

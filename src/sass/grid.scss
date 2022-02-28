@@ -5,7 +5,6 @@
   margin: 0 auto !important;
   @include flex-start();
   flex-wrap: wrap;
-//   gap: var(--gap-md);
   
   &.no_rowgap {
     row-gap: 0;
@@ -23,7 +22,7 @@
   
   @include breakpoint(tab-port) {
       max-width: 50rem;
-      padding: 0 3rem;
+      padding: 0 1rem;
   }
 
   @include clearfix;

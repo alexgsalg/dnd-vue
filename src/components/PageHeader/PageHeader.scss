@@ -8,6 +8,14 @@
   height: 15rem;
   border-bottom: 2px solid var(--color-red-darker);
   margin-bottom: var(--gap-lg);
+  
+  @include breakpoint(tab-port) {
+    margin-bottom: var(--gap-md);
+  }
+  
+  @include breakpoint(phone) {
+    margin-bottom: var(--gap-sm);
+  }
 
   &__title {
     display: inline-block;

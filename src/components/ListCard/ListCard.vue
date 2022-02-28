@@ -31,7 +31,7 @@
           ></v-img>
         </div>
         <v-card-title >{{ data.name }}</v-card-title>
-        <v-card-subtitle >{{ data.desc[0] | subtitleFormat }}</v-card-subtitle>
+        <!-- <v-card-subtitle >{{ data.desc[0] | subtitleFormat }}</v-card-subtitle> -->
       </div>
       <div class="card_footer">
       <button @click="onCardClick()" class="btn">{{ btnMsg }}</button>

@@ -1,10 +1,15 @@
 @import '../../sass/mixins.scss';
 
 .card {
+  position: relative;
   background-color: var(--color-blue-dark) !important;
   border-left: 5px solid var(--color-red-dark) !important;
   padding: 1rem 1.5rem;
-
+  
+  @include breakpoint(phone) {
+    padding: 2rem 1.5rem;
+  }
+  
   &_header {
     @include flex-start();
     flex-wrap: wrap;
@@ -29,11 +34,15 @@
       font-weight: 300 !important;
       letter-spacing: 0.1rem !important;
       padding: 0;
+      
+      @include breakpoint(phone) {
+        display: none
+      }
     }
   }
   &_footer {
     @include flex-end();
-
+    
     .btn {
       padding: 0.5rem;
       font-size: 1.6rem;
@@ -42,6 +51,13 @@
       font-weight: 500;
       border-radius: 5px;
       letter-spacing: 0.05rem !important;
+      
+      @include breakpoint(phone) {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        opacity: 0;
+      }
     }
   }
   &_img {
@@ -51,6 +67,19 @@
     opacity: 0.06;
     height: 60%;
     width: 50%;
-  }
+    
+    @include breakpoint(phone) {
+      position: relative;
+      bottom: 0;
+      left: -5px;
+      width: 15%;
+      opacity: 0.2;
+      
+      .v-image {
+        max-width: 75% !important;
+      }
+    }
 
+  }
+  
 }
