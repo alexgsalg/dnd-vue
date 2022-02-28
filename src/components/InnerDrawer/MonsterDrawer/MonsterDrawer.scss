@@ -1,0 +1,17 @@
+// @import '../../../sass/mixins.scss';
+
+.box {
+  margin-bottom: var(--gap-sm);
+  
+  h5{
+    margin-bottom: 0 !important;
+    display: inline-block;
+  }
+  &_inner {
+    margin-bottom: var(--gap-sm);
+
+    & p:last-child {
+      margin-bottom: 0.2rem;
+    }
+  }
+}

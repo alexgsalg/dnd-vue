@@ -65,7 +65,6 @@ export default Vue.extend({
       filter: '',
       loading: false,
       dataToCard: ({} as CardData) || {},
-      // filterSpells: {},
       showDrawer: false,
       sktLoading: true,
     };
@@ -99,10 +98,6 @@ export default Vue.extend({
     closeDrawer() {
       this.showDrawer = false;
     },
-
-    // addType(spell): [] {
-    //   return spell.map((s) => ({ ...s, type: "spell" }));
-    // },
   },
 });
 </script>
@@ -110,6 +105,3 @@ export default Vue.extend({
 @import "./Spells.scss";
 </style>
 
-function mounted() {
-  throw new Error('Function not implemented.');
-}

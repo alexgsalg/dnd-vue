@@ -8,7 +8,7 @@
       >
         <v-card class="mx-auto" dark >
           <v-img
-            src="../../assets/img/spell-bg.jpg"
+            :src="require(`@/assets/img/${card.cover}`)"
             height="100px"
           ></v-img>
           <v-card-title>{{ card.title }}</v-card-title>
@@ -34,9 +34,9 @@ export default Vue.extend({
   data() {
     return {
       cards: [
-        {title: 'Spells list', subtitle: 'Powerfull and usefull spells to use in you campaign', route: '/spells', icon: 'scroll', btnText: 'Go to list'},
-        {title: 'Monsters list', subtitle: 'Search all you need to know to beat them', route: '/monsters', icon: 'spaghetti-monster-flying', btnText: 'Go to list'},
-        {title: 'Characters list', subtitle: 'Powerfull and usefull spells to use in you campaign', route: '/characters', icon: 'fa-person-dots-from-line', btnText: 'See our heros'},
+        {title: 'Spells list', subtitle: 'Powerfull and usefull spells to use in you campaign', route: '/spells', icon: 'scroll', btnText: 'Go to list', cover: 'spell-bg.jpg'},
+        {title: 'Monsters list', subtitle: 'Search all you need to know to beat them', route: '/monsters', icon: 'spaghetti-monster-flying', btnText: 'Go to list', cover: 'dragon.jpg'},
+        {title: 'Characters list', subtitle: 'Powerfull and usefull spells to use in you campaign', route: '/characters', icon: 'fa-person-dots-from-line', btnText: 'See our heros', cover: 'dragon.jpg'},
       ]
     }
   },
