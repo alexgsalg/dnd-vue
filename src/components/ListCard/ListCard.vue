@@ -4,6 +4,7 @@
     :sm="sm"
     :md="md"
     :lg="lg"
+    :xl="xl"
   >
     <v-skeleton-loader
       :transition-group="sktTransition"
@@ -30,7 +31,8 @@
           ></v-img>
         </div>
         <v-card-title >{{ data.name }}</v-card-title>
-        <v-card-subtitle >{{ data.desc[0] | subtitleFormat }}</v-card-subtitle>
+        <v-card-subtitle v-if="data.type === 'spells'">{{ data.desc[0] | subtitleFormat }}</v-card-subtitle>
+        <v-card-subtitle v-else><span>Alignment: </span>{{ data.alignment }}</v-card-subtitle>
       </div>
       <div class="card_footer">
       <button @click="onCardClick()" class="btn">{{ btnMsg }}</button>
@@ -57,15 +59,15 @@ export default Vue.extend({
     },
     sktLoading: Boolean,
     cols: Number,
+    xl: Number,
     lg: Number,
     md: Number,
-    sm: Number
+    sm: Number,
   },
   data() {
     return {
       btnMsg: MessageType[this.data.type],
       formatData: Object,
-      subtitle: String,
       sktTransition: "scale-transition",
     };
   },
@@ -81,14 +83,14 @@ export default Vue.extend({
     }
   },
   filters: {
-      subtitleFormat(desc: string): any {
-        if (desc && desc.length > 70) {
-          desc = desc.substring(0, 70) + '...';
-          return desc
-        }
+    subtitleFormat(desc: string): any {
+      if (desc && desc.length > 70) {
+        desc = desc.substring(0, 70) + '...';
         return desc
       }
-    },
+      return desc
+    }
+  },
 });
 </script>
 <style lang="scss">

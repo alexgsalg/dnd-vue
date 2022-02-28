@@ -127,7 +127,7 @@
 import Vue from "vue";
 
 export default Vue.extend({
-  name: "SpellDrawer",
+  name: "MonsterDrawer",
   props: {
     data: Object,
   },
@@ -138,10 +138,10 @@ export default Vue.extend({
   },
 
   mounted() {
-    // getAllModal().then((response) => this.spellList = response.data)
+    // 
   },
 });
 </script>
 <style lang="scss">
-@import './SpellDrawer.scss';
+@import './MonsterDrawer.scss';
 </style>

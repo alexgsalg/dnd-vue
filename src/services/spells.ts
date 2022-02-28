@@ -8,6 +8,3 @@ export const getAllSpells = () => {
   return api.get('/spells');
 };
 
-// export const getSpell = (params: string) => {
-//   return api.get(`/spells/${params}`);
-// };

@@ -8,6 +8,14 @@
   height: 15rem;
   border-bottom: 2px solid var(--color-red-darker);
   margin-bottom: var(--gap-lg);
+  
+  @include breakpoint(tab-port) {
+    margin-bottom: var(--gap-md);
+  }
+  
+  @include breakpoint(phone) {
+    margin-bottom: var(--gap-sm);
+  }
 
   &__title {
     display: inline-block;
@@ -17,6 +25,13 @@
   
   &.spells {
     background:linear-gradient(to top right, rgba(#3a3a3a,0.4), rgba(#2d333e,0.4)), url('../../assets/img/2878886.jpg');
+    background-position: 50% 70%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  &.monsters {
+    background:linear-gradient(to top right, rgba(#3a3a3a,0.4), rgba(#2d333e,0.4)), url('../../assets/img/dragon.jpg');
     background-position: 50% 70%;
     background-repeat: no-repeat;
     background-size: cover;

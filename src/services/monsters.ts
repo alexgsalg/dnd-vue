@@ -8,6 +8,3 @@ export const getAllMonsters = () => {
   return api.get('/monsters');
 };
 
-// export const getMonster = (params: string) => {
-//   return api.get(`/monsters/${params}`);
-// };

@@ -32,6 +32,7 @@ export default Vue.extend({
 
   mounted() {
     this.$store.dispatch("getSpellsAction");
+    this.$store.dispatch("getMonstersAction");
   }
 });
 </script>

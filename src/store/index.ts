@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { getAllSpells } from '../services'
-
 import * as getters from './getters'
+
+import { getAllSpells, getAllMonsters } from '../services'
 
 Vue.use(Vuex);
 
@@ -11,9 +11,8 @@ export default new Vuex.Store({
     elBody: document.body,
     drawerState: false,
     spells: {results: [], count: Number, loading: false},
-    // spells: [],
-    characters: {results: [], count: Number},
-    monsters: {results: [], count: Number}
+    monsters: {results: [], count: Number, loading: false},
+    characters: {results: [], count: Number, loading: false},
   },
   getters,
   mutations: {
@@ -27,6 +26,9 @@ export default new Vuex.Store({
     },
     SET_SPELLS(state, spells) {
       state.spells = spells;
+    },
+    SET_MONSTERS(state, monsters) {
+      state.monsters = monsters;
     }
   },
   actions: {
@@ -48,6 +50,27 @@ export default new Vuex.Store({
             console.log(results)
             // Set LocalStorage
             localStorage.setItem('spellList', JSON.stringify( results ));
+          });
+      }
+    },
+    getMonstersAction({ commit }) {
+      if(localStorage.monsterList) { 
+        // Get LocalStorage
+        const results = JSON.parse(localStorage.getItem( 'monsterList') );
+        commit('SET_MONSTERS', results);
+      } else {
+        getAllMonsters()
+          .then((response) => response.data)
+          .then((data) => {
+            const results =  {
+              results: data.results.map((m) => ({ ...m, type: "monsters" })),
+              count: data.count,
+              loading: false
+            }
+            commit('SET_MONSTERS', results);
+            console.log(results)
+            // Set LocalStorage
+            localStorage.setItem('monsterList', JSON.stringify( results ));
           });
       }
     }
