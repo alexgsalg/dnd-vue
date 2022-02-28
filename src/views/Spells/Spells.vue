@@ -7,8 +7,8 @@
       <span>({{ sktLoading ? 'Calculating' : spells.count }})</span>
     </PageHeader>
     <v-container>
-      <v-form class="searchform">
-        <h3 class="searchform__title">Search the spell you need</h3>
+      <div class="searchform">
+        <h3 class="searchform__title">Search for your spells</h3>
         <fieldset class="searchform__field">
           <legend></legend>
           <input 
@@ -18,17 +18,13 @@
             placeholder="Search the spell name...">
             <font-awesome-icon icon="fa-solid fa-magnifying-glass" class="searchform__icon alt"/>
         </fieldset>
-        <!-- <v-text-field
-          class="searchform__input"
-          v-model="filter"
-          label="Spell name..."
-        ></v-text-field> -->
-      </v-form>
+      </div>
       <div class="row">
         <list-card
-          :lg="4"
-          :md="6"
-          :sm="12"
+          :cols="12"
+          :sm="6"
+          :md="4"
+          :lg="3"
           v-for="item of filterSpells"
           :key="item.index"
           :data="item"

@@ -59,7 +59,7 @@ export default Vue.extend({
     cols: Number,
     lg: Number,
     md: Number,
-    sm: Number
+    sm: Number,
   },
   data() {
     return {
