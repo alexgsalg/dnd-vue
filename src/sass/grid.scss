@@ -1,7 +1,7 @@
 @import './mixins.scss';
 
 .row {
-  max-width: var(--grid-width);
+//   max-width: var(--grid-width);
   margin: 0 auto !important;
   @include flex-start();
   flex-wrap: wrap;
@@ -36,7 +36,7 @@
 
           @include breakpoint(tab-port) {
               margin-right: 0;
-              margin-bottom: var(--gutter-vertical-small);
+            //   margin-bottom: var(--gutter-vertical-small);
           }
       }
 

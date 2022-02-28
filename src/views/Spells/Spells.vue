@@ -22,9 +22,10 @@
       <div class="row">
         <list-card
           :cols="12"
-          :sm="6"
+          :sm="4"
           :md="4"
-          :lg="3"
+          :lg="4"
+          :xl="3"
           v-for="item of filterSpells"
           :key="item.index"
           :data="item"
