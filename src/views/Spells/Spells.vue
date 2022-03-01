@@ -27,6 +27,7 @@
           :lg="4"
           :xl="3"
           v-for="item of filterSpells"
+          dataType="spells"
           :key="item.index"
           :data="item"
           @onCardClicked="cardClicked($event)"
@@ -38,6 +39,7 @@
         <Drawer
           :dataToCard="dataToCard"
           :showDrawer="showDrawer"
+          componentToLoad="spell_drawer"
           @onCloseDrawer="closeDrawer()"
         />
       </Transition>

@@ -1,85 +1,58 @@
 <template>
   <div class="container">
-    <div class="box">
-      <h4>Description:</h4>
-      <div class="box_inner">
-        <p v-for="(text, i) of data.desc" :key="i">
-          {{ text }}
-        </p>
+    <!-- Principle stats -->
+    <v-row class="d-flex mx-0 mb-4 no_rowgap">
+      <div class="highlight mb-0 pl-0 col-4" v-if="data.hit_points">
+        <h4>Hit points</h4>
+        <div class="highlight_data">
+          <font-awesome-icon icon="fa-solid fa-heart" class="hitpoint" />
+          <p>{{ data.hit_points }}</p>
+        </div>
       </div>
-      <v-divider dark></v-divider>
-    </div>
-    
-    <div class="box" v-if="data.higher_level">
-      <h5>Casted at higher level:</h5>
-      <div class="box_inner">
-        <p v-for="(text, i) of data.higher_level" :key="i">
-          {{ text }}
-        </p>
+
+      <div class="highlight mb-0 pl-0 col-4" v-if="data.armor_class">
+        <h4>Armor Class</h4>
+        <div class="highlight_data">
+          <font-awesome-icon icon="fa-solid fa-shield-blank" class="hitpoint" />
+          <p>{{ data.armor_class }}</p>
+        </div>
       </div>
-      <v-divider dark></v-divider>
-    </div>
-    
-    <div class="box" v-if="data.classes">
-      <h5>Used by:</h5>
-      <div class="box_inner">
-        <p>
-          <span v-for="(text, i) of data.classes" :key="i">
-            <template v-if="i > 0">,</template>
-            {{ text.name }}
-          </span>
-        </p>
+
+      <div class="highlight mb-0 pl-0 col-4" v-if="data.xp">
+        <h4>Experience</h4>
+        <div class="highlight_data">
+          <font-awesome-icon icon="fas fa-bookmark" class="hitpoint" />
+          <p>{{ data.xp }}</p>
+        </div>
       </div>
-      <v-divider dark></v-divider>
-    </div>
-    
-    <div class="box" v-if="data.damage">
-      <h5>Damage:</h5>
-      <div class="box_inner">
-        <p>{{ data.damage.damage_type.name }}</p>
-        <p v-if="data.damage.damage_at_character_level">
-          <strong>Damage at character level</strong><br>
-          <span v-for="(value, name, i) of data.damage.damage_at_character_level" :key="i">
-            <template v-if="i > 0"> | </template>
-            <strong>Level {{ name }}</strong>: {{ value }} 
-          </span>
-        </p>
-        <p v-if="data.damage.damage_at_slot_level">
-          <strong>Damage at slot level</strong><br>
-          <span v-for="(value, name, i) of data.damage.damage_at_slot_level" :key="i">
-            <template v-if="i > 0"> | </template>
-            <strong>Level {{ name }}</strong>: {{ value }} 
-          </span>
-        </p>
-      </div>
-      <v-divider dark></v-divider>
-    </div>
-    
-    <div class="box" v-if="data.heal_at_slot_level">
-      <h5>Heal at slot level:</h5>
-      <div class="box_inner">
-        <p>
-          <span v-for="(value, name, i) of data.heal_at_slot_level" :key="i">
-            <template v-if="i > 0"> | </template>
-            <strong>Level {{ name }}</strong>: {{ value }} 
-          </span>
-        </p>
-      </div>
-      <v-divider dark></v-divider>
-    </div>
-    
-    <v-row class="d-flex mx-0 no_rowgap">
-      <div class="box mb-0 pl-0 col-6" v-if="data.material">
-        <h5>Materials needed:</h5>
+    </v-row>
+    <v-divider dark></v-divider>
+
+    <v-row class="d-flex mx-0 pt-3 no_rowgap">
+      <div class="box mb-0 pl-0 col-4 col-md-3" v-if="data.type">
+        <h5>Type:</h5>
         <div class="box_inner">
-          <p>{{ data.material }}</p>
+          <p>{{ data.type }}</p>
+        </div>
+      </div>
+      <div class="box mb-0 pl-0 col-4 col-md-3" v-if="data.subtype">
+        <h5>Subtype:</h5>
+        <div class="box_inner">
+          <p>{{ data.subtype }}</p>
         </div>
       </div>
       
-      <div class="box mb-0 pl-0 col-6" v-if="data.school">
-        <h5>School:</h5>
+      <div class="box mb-0 pl-0 col-4 col-md-3" v-if="data.alignment">
+        <h5>Alignment:</h5>
         <div class="box_inner">
-          <p>{{ data.school.name }}</p>
+          <p>{{ data.alignment | toCapitalize }}</p>
+        </div>
+      </div>
+      
+      <div class="box mb-0 pl-0 col-4 col-md-3" v-if="data.size">
+        <h5>Size:</h5>
+        <div class="box_inner">
+          <p>{{ data.size }}</p>
         </div>
       </div>
     </v-row>
@@ -140,6 +113,15 @@ export default Vue.extend({
   mounted() {
     // 
   },
+  filters: {
+    toCapitalize(value) {
+      const words = value.split(" ");
+      for (let i = 0; i < words.length; i++) {
+          words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+      }
+      return words.join(" ");
+    }
+  }
 });
 </script>
 <style lang="scss">

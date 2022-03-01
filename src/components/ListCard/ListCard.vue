@@ -27,16 +27,17 @@
             contain
             max-height="100%"
             max-width="45%"
-            src="../../assets/img/book.png"
+            :src="require(`../../assets/img/${cardIcon}`)"
           ></v-img>
         </div>
         <v-card-title >{{ data.name }}</v-card-title>
-        <v-card-subtitle v-if="data.type === 'spell'">{{ data.desc[0] | subtitleFormat }}</v-card-subtitle>
+        <v-card-subtitle v-if="dataType === 'spells'">{{ data.desc[0] | subtitleFormat }}</v-card-subtitle>
+        <v-card-subtitle v-else-if="dataType === 'monsters'"><span>AC: </span>{{ data.armor_class }} | <span>XP: </span>{{ data.xp}} </v-card-subtitle>
         <v-card-subtitle v-else><span>Alignment: </span>{{ data.alignment }}</v-card-subtitle>
         
       </div>
       <div class="card_footer">
-      <button @click="onCardClick()" class="btn">{{ btnMsg }}</button>
+      <button @click="onCardClick()" class="btn">{{ btnMsg || 'Gimme the stats' }}</button>
       </div>
     </v-card>
   </v-col>
@@ -46,15 +47,21 @@
 import Vue from 'vue';
 
 enum MessageType {
-  'spell' = 'What it does?',
-  'monster' = 'Who is?',
-  'character' = 'Gimme Stats'
+  'spells' = 'What it does?',
+  'monsters' = 'Monster stats',
+  'characters' = 'Gimme Stats'
+}
+enum IconType {
+  'spells' = 'book.png',
+  'monsters' = 'hand.png',
+  'characters' = 'book.png'
 }
 
 export default Vue.extend({
   name: 'ListCard',
   components: {},
   props: {
+    dataType: String,
     data: {
       type: Object
     },
@@ -67,7 +74,8 @@ export default Vue.extend({
   },
   data() {
     return {
-      btnMsg: MessageType[this.data.type],
+      btnMsg: MessageType[this.dataType],
+      cardIcon: IconType[this.dataType],
       formatData: Object,
       sktTransition: "scale-transition",
     };
