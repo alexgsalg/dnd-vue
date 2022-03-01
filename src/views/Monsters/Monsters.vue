@@ -89,10 +89,7 @@ export default Vue.extend({
 
   methods: {
     cardClicked(item): void {
-      this.dataToCard = {
-        ...item,
-        type: "monster",
-      };
+      this.dataToCard = item;
       this.showDrawer = true;
       this.$store.commit('setDrawerState', true)
     },
