@@ -102,14 +102,21 @@
         </div>
       </div>
       
-      <div class="box pl-0" v-if="data.size">
-        <h4>Size:</h4>
-        <div class="box_inner">
-          <span>{{ data.size }}</span>
-        </div>
+    </div>
+    <v-divider dark></v-divider>
+
+    <div class="box mx-0 pt-3  pl-0" v-if="data.special_abilities">
+      <h4>Special abilities:</h4>
+      <div class="box_inner">
+        <p class="mb-2" v-for="(item, i) of data.special_abilities" :key="i">
+          <strong>- {{ item.name }}:</strong> 
+            <span v-if="item.usage">({{item.usage.times}} {{item.usage.type}})</span>
+            {{ item.desc }} 
+          
+        </p>
       </div>
     </div>
-      <v-divider dark></v-divider>
+    <v-divider dark></v-divider>
 
     <v-row class="d-flex mx-0 pt-3 no_rowgap">
       <div class="box mb-0 pl-0 col-4 col-md-3" v-if="data.type">
@@ -207,7 +214,12 @@ export default Vue.extend({
     afterSemicolon (value) {
       const words = value.substring(value.indexOf(":"));
       return words.substring(1);
-    }
+    },
+    // sanitizeText (value) {
+    //   const words = value.substring(value.indexOf(":"));
+    //   if (value.indexOf("_")) return
+    //   return words.substring(1);
+    // }
   }
 });
 </script>

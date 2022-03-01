@@ -48,7 +48,9 @@
   }
 
   &_inner {
-
+    strong {
+      font-weight: 600;
+    }
     & p:last-child {
       margin-bottom: 0.2rem;
     }
