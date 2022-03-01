@@ -42,7 +42,7 @@ export default new Vuex.Store({
           .then((response) => response.data)
           .then((data) => {
             const results =  {
-              results: data.results.map((s) => ({ ...s, type: "spell" })),
+              results: data.results.map((s) => ({ ...s, itemType: "spells" })),
               count: data.count,
               loading: false
             }
@@ -63,7 +63,7 @@ export default new Vuex.Store({
           .then((response) => response.data)
           .then((data) => {
             const results =  {
-              results: data.results.map((m) => ({ ...m, type: "monsters" })),
+              results: data.results.map((m) => ({ ...m, itemType: "monsters" })),
               count: data.count,
               loading: false
             }

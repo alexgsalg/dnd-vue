@@ -11,7 +11,11 @@
         <h2>{{ this.dataToCard.name }}</h2>
       </div>
       <!-- If Spells Data -->
-      <spell-drawer :data="dataToCard" />
+      <spell-drawer v-if="componentToLoad === 'spell_drawer' " :data="dataToCard" />
+      <!-- If Monster Data -->
+      <monster-drawer v-else-if="componentToLoad === 'monster_drawer' " :data="dataToCard" />
+      <!-- If Character Data -->
+      <character-drawer v-else-if="componentToLoad === 'character_drawer' " :data="dataToCard" />
     </div>
     <!-- Mask -->
     <span
@@ -24,11 +28,16 @@
 <script lang="ts">
 import Vue from "vue";
 import SpellDrawer from "../InnerDrawer/SpellDrawer/SpellDrawer.vue";
+import MonsterDrawer from "../InnerDrawer/MonsterDrawer/MonsterDrawer.vue";
 
 export default Vue.extend({
-  components: { SpellDrawer },
+  components: { 
+    SpellDrawer, 
+    MonsterDrawer 
+  },
   name: "Drawer",
   props: {
+    componentToLoad: String,
     dataToCard: Object,
     showDrawer: Boolean,
   },
