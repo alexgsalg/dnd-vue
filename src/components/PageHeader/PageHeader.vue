@@ -4,6 +4,7 @@
       <h2 class="pageheader__title">{{ title }}</h2>
       <slot v-if="spanType === 'count'" class="pageheader__count"></slot>
     </v-container>
+    <slot name="tabs" class="pageheader__tabs"></slot>
   </div>
 </template>
 

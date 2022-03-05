@@ -17,11 +17,6 @@
     overflow: auto;
     transition: right ease-in-out var(--trs);
 
-    // @include breakpoint(tab-land) {
-    //   grid-template-columns: repeat(2, 1fr);
-    //   grid-template-rows: repeat(2,auto);
-    // }
-
     @include breakpoint(phone) {
       width: 100vw;
       right: -100vw;
