@@ -4,22 +4,23 @@
       <h2 class="pageheader__title">{{ title }}</h2>
       <slot v-if="spanType === 'count'" class="pageheader__count"></slot>
     </v-container>
+    <slot name="tabs" class="pageheader__tabs"></slot>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue from 'vue';
 
 export default Vue.extend({
-  name: "PageHeader",
+  name: 'PageHeader',
   props: {
     title: String,
     spanType: String,
-    page: String,
-  },
+    page: String
+  }
 });
 </script>
 
 <style lang="scss">
-@import "./PageHeader.scss";
+@import './PageHeader.scss';
 </style>

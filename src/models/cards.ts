@@ -3,4 +3,4 @@ export interface CardData {
   name: string;
   url: string;
   type: string;
-};
+}

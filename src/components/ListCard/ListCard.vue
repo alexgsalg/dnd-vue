@@ -1,11 +1,5 @@
 <template>
-  <v-col 
-    :cols="cols"
-    :sm="sm"
-    :md="md"
-    :lg="lg"
-    :xl="xl"
-  >
+  <v-col :cols="cols" :sm="sm" :md="md" :lg="lg" :xl="xl">
     <v-skeleton-loader
       :transition-group="sktTransition"
       height="108"
@@ -14,12 +8,7 @@
       v-if="sktLoading"
     >
     </v-skeleton-loader>
-    <v-card 
-      elevation="2" 
-      outlined 
-      class="card"
-      v-else
-      >
+    <v-card elevation="2" outlined class="card" v-else>
       <div class="card_header">
         <!-- Icon -->
         <div class="card_img">
@@ -30,14 +19,22 @@
             :src="require(`../../assets/img/${cardIcon}`)"
           ></v-img>
         </div>
-        <v-card-title >{{ data.name }}</v-card-title>
-        <v-card-subtitle v-if="dataType === 'spells'">{{ data.desc[0] | subtitleFormat }}</v-card-subtitle>
-        <v-card-subtitle v-else-if="dataType === 'monsters'"><span>AC: </span>{{ data.armor_class }} | <span>XP: </span>{{ data.xp}} </v-card-subtitle>
-        <v-card-subtitle v-else><span>Alignment: </span>{{ data.alignment }}</v-card-subtitle>
-        
+        <v-card-title>{{ data.name }}</v-card-title>
+        <v-card-subtitle v-if="dataType === 'spells'">{{
+          data.desc[0] | subtitleFormat
+        }}</v-card-subtitle>
+        <v-card-subtitle v-else-if="dataType === 'monsters'"
+          ><span>AC: </span>{{ data.armor_class }} | <span>XP: </span
+          >{{ data.xp }}
+        </v-card-subtitle>
+        <v-card-subtitle v-else
+          ><span>Alignment: </span>{{ data.alignment }}</v-card-subtitle
+        >
       </div>
       <div class="card_footer">
-      <button @click="onCardClick()" class="btn">{{ btnMsg || 'Gimme the stats' }}</button>
+        <button @click="onCardClick()" class="btn">
+          {{ btnMsg || 'Gimme the stats' }}
+        </button>
       </div>
     </v-card>
   </v-col>
@@ -70,24 +67,24 @@ export default Vue.extend({
     xl: Number,
     lg: Number,
     md: Number,
-    sm: Number,
+    sm: Number
   },
   data() {
     return {
       btnMsg: MessageType[this.dataType],
       cardIcon: IconType[this.dataType],
       formatData: Object,
-      sktTransition: "scale-transition",
+      sktTransition: 'scale-transition'
     };
   },
 
   mounted() {
-    // 
+    //
   },
 
   methods: {
     async onCardClick(): Promise<void> {
-      console.log(this.$props.data)
+      console.log(this.$props.data);
       this.$emit('onCardClicked', this.$props.data);
     }
   },
@@ -95,11 +92,11 @@ export default Vue.extend({
     subtitleFormat(desc: string): any {
       if (desc && desc.length > 70) {
         desc = desc.substring(0, 70) + '...';
-        return desc
+        return desc;
       }
-      return desc
+      return desc;
     }
-  },
+  }
 });
 </script>
 <style lang="scss">

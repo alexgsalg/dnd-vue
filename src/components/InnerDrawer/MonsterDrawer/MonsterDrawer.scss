@@ -1,19 +1,30 @@
 @import '../../../sass/mixins.scss';
 
+
 .highlight {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  
+  @include breakpoint(tab-land) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2,auto);
+  }
+}
+
+.highlight_data {
   width: 100% !important;
   max-width: 200px;
   padding: 1rem;
-  text-align: center;
+  text-align: left;
 
   h4 {
     margin-bottom: 0 !important;
   }
   
-  &_data {
+  & > div {
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 100%;
     height: 65px;
@@ -57,7 +68,21 @@
   }
 }
 
-.box_stats {
+.stats {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  
+  @include breakpoint(tab-land) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2,auto);
+  }
+}
+
+.stats_box {
+  flex: 1;
+  padding: 1.5rem;
+  min-width: 110px;
+
 
   .box_inner {
     display: flex;
@@ -83,12 +108,13 @@
   }
 }
 
+.features {
+  margin-top: -2rem;
+}
+
+
 .no_rowgap > .highlight ~ .highlight {
   border-left: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.no_rowgap > .highlight:first-of-type,
-.no_rowgap > .box_stats:first-of-type {
-  margin-left: -2rem;
-}
 

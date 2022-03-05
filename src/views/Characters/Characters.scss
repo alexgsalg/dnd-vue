@@ -1,0 +1,42 @@
+.fullheight {
+  height: 100%;
+}
+
+.tab-content {
+  display: grid !important;
+  grid-template-columns: minmax(200px, 300px) 1fr;
+  height: 100%;
+}
+
+.side {
+  // height: 100%;
+  padding-bottom: 0 !important;
+
+  .v-slide-group {
+
+  }
+
+  &_item {
+    padding: 2rem !important;
+  }
+
+  &__img {
+    width: 2.5rem;
+    margin-right: 1rem;
+  }
+
+  &__title {
+    font-size: var(--fontsize-6);
+    color: var(--color-lighter) !important;
+    display: inline-block;
+  }
+}
+
+.v-tabs-slider-wrapper {
+  top: 0px;
+  color: var(--color-lighter);
+}
+
+.v-tab--active {
+  background-color: var(--color-red-darker);
+}

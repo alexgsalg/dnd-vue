@@ -7,4 +7,3 @@ const api = axios.create({
 export const getAllSpells = () => {
   return api.get('/spells');
 };
-

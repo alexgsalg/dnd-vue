@@ -9,7 +9,7 @@
       </div>
       <v-divider dark></v-divider>
     </div>
-    
+
     <div class="box" v-if="data.higher_level">
       <h5>Casted at higher level:</h5>
       <div class="box_inner">
@@ -19,7 +19,7 @@
       </div>
       <v-divider dark></v-divider>
     </div>
-    
+
     <div class="box" v-if="data.classes">
       <h5>Used by:</h5>
       <div class="box_inner">
@@ -32,42 +32,51 @@
       </div>
       <v-divider dark></v-divider>
     </div>
-    
+
     <div class="box" v-if="data.damage">
       <h5>Damage:</h5>
       <div class="box_inner">
         <p>{{ data.damage.damage_type.name }}</p>
         <p v-if="data.damage.damage_at_character_level">
-          <strong>Damage at character level</strong><br>
-          <span v-for="(value, name, i) of data.damage.damage_at_character_level" :key="i">
+          <strong>Damage at character level</strong><br />
+          <span
+            v-for="(value, name, i) of data.damage.damage_at_character_level"
+            :key="i"
+          >
             <template v-if="i > 0"> | </template>
-            <strong>Level {{ name }}</strong>: {{ value }} 
+            <strong>Level {{ name }}</strong
+            >: {{ value }}
           </span>
         </p>
         <p v-if="data.damage.damage_at_slot_level">
-          <strong>Damage at slot level</strong><br>
-          <span v-for="(value, name, i) of data.damage.damage_at_slot_level" :key="i">
+          <strong>Damage at slot level</strong><br />
+          <span
+            v-for="(value, name, i) of data.damage.damage_at_slot_level"
+            :key="i"
+          >
             <template v-if="i > 0"> | </template>
-            <strong>Level {{ name }}</strong>: {{ value }} 
+            <strong>Level {{ name }}</strong
+            >: {{ value }}
           </span>
         </p>
       </div>
       <v-divider dark></v-divider>
     </div>
-    
+
     <div class="box" v-if="data.heal_at_slot_level">
       <h5>Heal at slot level:</h5>
       <div class="box_inner">
         <p>
           <span v-for="(value, name, i) of data.heal_at_slot_level" :key="i">
             <template v-if="i > 0"> | </template>
-            <strong>Level {{ name }}</strong>: {{ value }} 
+            <strong>Level {{ name }}</strong
+            >: {{ value }}
           </span>
         </p>
       </div>
       <v-divider dark></v-divider>
     </div>
-    
+
     <v-row class="d-flex mx-0 no_rowgap">
       <div class="box mb-0 pl-0 col-6" v-if="data.material">
         <h5>Materials needed:</h5>
@@ -75,7 +84,7 @@
           <p>{{ data.material }}</p>
         </div>
       </div>
-      
+
       <div class="box mb-0 pl-0 col-6" v-if="data.school">
         <h5>School:</h5>
         <div class="box_inner">
@@ -83,8 +92,8 @@
         </div>
       </div>
     </v-row>
-      <v-divider dark></v-divider>
-    
+    <v-divider dark></v-divider>
+
     <v-row class="d-flex mx-0 pt-3 mb-5">
       <div class="col-3 pl-0" v-if="data.level">
         <h5>Level to get:</h5>
@@ -124,22 +133,22 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue from 'vue';
 
 export default Vue.extend({
-  name: "SpellDrawer",
+  name: 'SpellDrawer',
   props: {
-    data: Object,
+    data: Object
   },
   data() {
     return {
-      loading: false,
+      loading: false
     };
   },
 
   mounted() {
     // getAllModal().then((response) => this.spellList = response.data)
-  },
+  }
 });
 </script>
 <style lang="scss">
