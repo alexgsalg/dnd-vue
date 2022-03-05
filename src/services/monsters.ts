@@ -7,4 +7,3 @@ const api = axios.create({
 export const getAllMonsters = () => {
   return api.get('/monsters');
 };
-

@@ -1,9 +1,6 @@
 <template>
   <div>
-    <PageHeader 
-      :title="'Spells List'" 
-      :page="'spells'"
-      :spanType="'count'">
+    <PageHeader :title="'Spells List'" :page="'spells'" :spanType="'count'">
       <span>({{ sktLoading ? 'Calculating' : spells.count }})</span>
     </PageHeader>
     <v-container>
@@ -11,12 +8,16 @@
         <h3 class="searchform__title">Search for your spells</h3>
         <fieldset class="searchform__field">
           <legend></legend>
-          <input 
-            type="text" 
+          <input
+            type="text"
             class="searchform__input"
             v-model="filter"
-            placeholder="Search the spell name...">
-            <font-awesome-icon icon="fa-solid fa-magnifying-glass" class="searchform__icon alt"/>
+            placeholder="Search the spell name..."
+          />
+          <font-awesome-icon
+            icon="fa-solid fa-magnifying-glass"
+            class="searchform__icon alt"
+          />
         </fieldset>
       </div>
       <div class="row">
@@ -56,11 +57,11 @@ import Drawer from '../../components/Drawer/Drawer.vue';
 import { CardData } from '../../models/cards';
 
 export default Vue.extend({
-  name: "Spells",
+  name: 'Spells',
   components: {
     PageHeader,
     ListCard,
-    Drawer,
+    Drawer
   },
   data() {
     return {
@@ -68,42 +69,41 @@ export default Vue.extend({
       loading: false,
       dataToCard: ({} as CardData) || {},
       showDrawer: false,
-      sktLoading: true,
+      sktLoading: true
     };
   },
 
   computed: {
     spells() {
-      return this.$store.state.spells
+      return this.$store.state.spells;
     },
     filterSpells() {
-      return this.spells.results.filter(spell => {
-        return spell.name.toLowerCase().includes(this.filter.toLowerCase())
-      })
+      return this.spells.results.filter((spell) => {
+        return spell.name.toLowerCase().includes(this.filter.toLowerCase());
+      });
     }
   },
 
   mounted() {
-    if (!this.spells.loading) this.sktLoading = false
+    if (!this.spells.loading) this.sktLoading = false;
   },
 
   methods: {
     cardClicked(item): void {
       this.dataToCard = {
         ...item,
-        type: "spell",
+        type: 'spell'
       };
       this.showDrawer = true;
-      this.$store.commit('setDrawerState', true)
+      this.$store.commit('setDrawerState', true);
     },
 
     closeDrawer() {
       this.showDrawer = false;
-    },
-  },
+    }
+  }
 });
 </script>
 <style lang="scss">
-@import "./Spells.scss";
+@import './Spells.scss';
 </style>
-

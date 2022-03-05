@@ -1,9 +1,6 @@
 <template>
-    <div>
-    <PageHeader 
-      :title="'Monsters List'" 
-      :page="'monsters'"
-      :spanType="'count'">
+  <div>
+    <PageHeader :title="'Monsters List'" :page="'monsters'" :spanType="'count'">
       <span>({{ sktLoading ? 'Calculating' : monsters.count }})</span>
     </PageHeader>
     <v-container>
@@ -11,12 +8,16 @@
         <h3 class="searchform__title">Search for your monsters</h3>
         <fieldset class="searchform__field">
           <legend></legend>
-          <input 
-            type="text" 
+          <input
+            type="text"
             class="searchform__input"
             v-model="filter"
-            placeholder="Search the monster name...">
-            <font-awesome-icon icon="fa-solid fa-magnifying-glass" class="searchform__icon alt"/>
+            placeholder="Search the monster name..."
+          />
+          <font-awesome-icon
+            icon="fa-solid fa-magnifying-glass"
+            class="searchform__icon alt"
+          />
         </fieldset>
       </div>
       <div class="row">
@@ -56,11 +57,11 @@ import Drawer from '../../components/Drawer/Drawer.vue';
 import { CardData } from '../../models/cards';
 
 export default Vue.extend({
-  name: "Monsters",
+  name: 'Monsters',
   components: {
     PageHeader,
     ListCard,
-    Drawer,
+    Drawer
   },
   data() {
     return {
@@ -68,18 +69,18 @@ export default Vue.extend({
       loading: false,
       dataToCard: ({} as CardData) || {},
       showDrawer: false,
-      sktLoading: true,
+      sktLoading: true
     };
   },
 
   computed: {
     monsters() {
-      return this.$store.state.monsters
+      return this.$store.state.monsters;
     },
     filterMonsters() {
-      return this.monsters.results.filter(monster => {
-        return monster.name.toLowerCase().includes(this.filter.toLowerCase())
-      })
+      return this.monsters.results.filter((monster) => {
+        return monster.name.toLowerCase().includes(this.filter.toLowerCase());
+      });
     }
   },
 
@@ -91,14 +92,13 @@ export default Vue.extend({
     cardClicked(item): void {
       this.dataToCard = item;
       this.showDrawer = true;
-      this.$store.commit('setDrawerState', true)
+      this.$store.commit('setDrawerState', true);
     },
 
     closeDrawer() {
       this.showDrawer = false;
-    },
-
-  },
+    }
+  }
 });
 </script>
 

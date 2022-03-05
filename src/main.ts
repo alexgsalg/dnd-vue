@@ -3,6 +3,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import vuetify from './plugins/vuetify';
+import 'animate.css';
 
 import './sass/reset.scss';
 import './styles.scss';

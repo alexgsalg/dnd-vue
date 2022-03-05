@@ -8,18 +8,18 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue from 'vue';
 
 export default Vue.extend({
-  name: "PageHeader",
+  name: 'PageHeader',
   props: {
     title: String,
     spanType: String,
-    page: String,
-  },
+    page: String
+  }
 });
 </script>
 
 <style lang="scss">
-@import "./PageHeader.scss";
+@import './PageHeader.scss';
 </style>

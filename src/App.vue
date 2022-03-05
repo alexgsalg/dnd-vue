@@ -2,11 +2,15 @@
   <v-app :class="{ open: drawerState }">
     <Header />
     <v-main>
-      <router-view v-slot="{ Component }">
-        <transition name="fade">
+      <transition
+        mode="out-in"
+        enter-active-class="animate__animated animate__fadeIn animate__faster"
+        leave-active-class="animate__animated animate__fadeOut animate__faster"
+      >
+        <router-view v-slot="{ Component }">
           <component :is="Component" />
-        </transition>
-      </router-view>
+        </router-view>
+      </transition>
       <!-- <router-view /> -->
     </v-main>
   </v-app>
@@ -14,7 +18,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import Header from './components/Header/Header.vue'
+import Header from './components/Header/Header.vue';
 
 export default Vue.extend({
   name: 'App',
@@ -25,34 +29,31 @@ export default Vue.extend({
     //
   }),
   computed: {
-    drawerState(): boolean  {
-      return this.$store.getters.getDrawerState
-    },
+    drawerState(): boolean {
+      return this.$store.getters.getDrawerState;
+    }
   },
 
   mounted() {
-    this.$store.dispatch("getSpellsAction");
-    this.$store.dispatch("getMonstersAction");
+    this.$store.dispatch('getSpellsAction');
+    this.$store.dispatch('getMonstersAction');
   }
 });
 </script>
 
 <style lang="scss">
 @font-face {
-  font-family: "Blaak";
+  font-family: 'Blaak';
   font-weight: 400;
   font-style: normal;
   font-display: auto;
-  src: local("Blaak"),
-   url('/fonts/BlaakRegular.ttf') format("ttf");
+  src: local('Blaak'), url('/fonts/BlaakRegular.ttf') format('ttf');
 }
 @font-face {
-  font-family: "Blaak";
+  font-family: 'Blaak';
   font-weight: 700;
   font-style: normal;
   font-display: auto;
-  src: local("Blaak"),
-   url('/fonts/BlaakBold.ttf') format("ttf");
+  src: local('Blaak'), url('/fonts/BlaakBold.ttf') format('ttf');
 }
-
 </style>
