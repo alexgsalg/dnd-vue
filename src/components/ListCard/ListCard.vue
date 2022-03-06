@@ -51,7 +51,9 @@ enum MessageType {
 enum IconType {
   'spells' = 'book.png',
   'monsters' = 'hand.png',
-  'characters' = 'book.png'
+  'alignments' = 'armor.png',
+  'classes' = 'swords.png',
+  'races' = 'helmet.png'
 }
 
 export default Vue.extend({
