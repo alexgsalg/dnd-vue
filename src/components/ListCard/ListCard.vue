@@ -8,7 +8,7 @@
       v-if="sktLoading"
     >
     </v-skeleton-loader>
-    <v-card elevation="2" outlined class="card" v-else>
+    <v-card elevation="2" outlined class="card" v-else dark>
       <div class="card_header">
         <!-- Icon -->
         <div class="card_img">
@@ -28,10 +28,10 @@
           >{{ data.xp }}
         </v-card-subtitle>
         <v-card-subtitle v-else
-          ><span>Alignment: </span>{{ data.alignment }}</v-card-subtitle
+          ><span>Alignment: </span>{{ data.desc }}</v-card-subtitle
         >
       </div>
-      <div class="card_footer">
+      <div class="card_footer" v-if="btnMsg">
         <button @click="onCardClick()" class="btn">
           {{ btnMsg || 'Gimme the stats' }}
         </button>
@@ -46,7 +46,7 @@ import Vue from 'vue';
 enum MessageType {
   'spells' = 'What it does?',
   'monsters' = 'Monster stats',
-  'characters' = 'Gimme Stats'
+  'classes' = 'Gimme infos'
 }
 enum IconType {
   'spells' = 'book.png',
