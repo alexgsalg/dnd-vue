@@ -37,11 +37,18 @@
     background-size: cover;
   }
   
+  &.classes {
+    background:linear-gradient(to top right, rgba(#3a3a3a,0.4), rgba(#2d333e,0.4)), url('../../assets/img/wizard.jpg');
+    background-position: 50% 70%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
   &.characters {
     align-items: flex-end;
     flex-wrap: wrap;
     height: 20rem;
-    background:linear-gradient(to top right, rgba(#3a3a3a,0.4), rgba(#2d333e,0.4)), url('../../assets/img/dragon.jpg');
+    background:linear-gradient(to top right, rgba(#3a3a3a,0.4), rgba(#2d333e,0.4)), url('../../assets/img/dnd.jpg');
     background-position: 50% 70%;
     background-repeat: no-repeat;
     background-size: cover;

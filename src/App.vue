@@ -37,6 +37,9 @@ export default Vue.extend({
   mounted() {
     this.$store.dispatch('getSpellsAction');
     this.$store.dispatch('getMonstersAction');
+    this.$store.dispatch('getClassesAction');
+    this.$store.dispatch('getAlignmentsAction');
+    this.$store.dispatch('getRacesAction');
   }
 });
 </script>

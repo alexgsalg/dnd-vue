@@ -60,6 +60,11 @@ export default Vue.extend({
         icon: 'spaghetti-monster-flying'
       },
       {
+        name: 'Classes',
+        route: '/classes',
+        icon: 'fa-address-book'
+      },
+      {
         name: 'Characters',
         route: '/characters',
         icon: 'fa-person-dots-from-line'

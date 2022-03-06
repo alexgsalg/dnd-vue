@@ -1,5 +1,31 @@
 @import '../../sass/buttons.scss';
 
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  height: 70vh !important;
+  min-height: 500px;
+  background:linear-gradient(to top right, rgba(#3a3a3a,0.7), rgba(#2d333e,0.9)), url('../../assets/img/hero.jpg');
+  background-position: 50% 70%;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &__title {
+    letter-spacing: 0.2rem;
+    line-height: 3.5rem
+  }
+
+  &__subtitle {
+    font-size: var(--fontsize-5);
+    letter-spacing: 0.2rem;
+    line-height: 3.5rem
+  }
+}
+
 .btn {
   @extend .btn;
   
@@ -8,7 +34,19 @@
   }
 }
 
+.v-card__title {
+  font-size: var(--fontsize-3) !important;
+  padding-top: 3rem !important;
+  font-family: var(--font-messiri);
+  margin-top: 0 !important;
+}
+
 .v-card__subtitle {
   font-size: var(--fontsize-7) !important;
+  line-height: 1.4em !important;
   margin-top: 0 !important;
+}
+
+.v-card__actions {
+  padding: 0 1.6rem 1.6rem !important;
 }
