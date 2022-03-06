@@ -4,7 +4,7 @@ import Home from '../views/Home/Home.vue';
 import Spells from '../views/Spells/Spells.vue';
 import Monsters from '../views/Monsters/Monsters.vue';
 import Characters from '../views/Characters/Characters.vue';
-import Roleplay from '../views/Roleplay/Roleplay.vue';
+import Classes from '../views/Classes/Classes.vue';
 
 Vue.use(VueRouter);
 
@@ -30,9 +30,9 @@ const routes: Array<RouteConfig> = [
     component: Characters
   },
   {
-    path: '/roleplay',
-    name: 'Roleplay',
-    component: Roleplay
+    path: '/classes',
+    name: 'Classes',
+    component: Classes
   }
   // {
   //   path: '/about',

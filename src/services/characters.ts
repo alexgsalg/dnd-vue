@@ -8,8 +8,8 @@ export const getAlignments = () => {
   return api.get('/alignments');
 };
 
-export const getClasses = () => {
-  return api.get('/classes');
+export const getEquipments = () => {
+  return api.get('/equipments');
 };
 
 export const getRaces = () => {
