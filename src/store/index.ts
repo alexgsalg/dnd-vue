@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import * as getters from './getters';
 
-import { getAllSpells, getAllMonsters, getAlignments, getClasses, getRaces } from '../services';
+import { getAllSpells, getAllMonsters, getAlignments, getEquipments, getClasses, getRaces } from '../services';
 
 Vue.use(Vuex);
 
@@ -14,7 +14,8 @@ export default new Vuex.Store({
     monsters: { results: [], count: Number, loading: false },
     classes: { results: [], count: Number, loading: false },
     races: { results: [], count: Number, loading: false },
-    alignments: { results: [], count: Number, loading: false }
+    alignments: { results: [], count: Number, loading: false },
+    equipments: { results: [], count: Number, loading: false }
   },
   getters,
   mutations: {
@@ -40,6 +41,9 @@ export default new Vuex.Store({
     },
     SET_ALIGNMENTS(state, alignments) {
       state.alignments = alignments;
+    },
+    SET_EQUIPMENTS(state, equipments) {
+      state.equipments = equipments;
     }
   },
   actions: {
@@ -157,6 +161,29 @@ export default new Vuex.Store({
             console.log(results);
             // Set LocalStorage
             localStorage.setItem('racesList', JSON.stringify(results));
+          });
+      }
+    },
+    getEquipmentsAction({ commit }) {
+      if (localStorage.equipmentsList) {
+        // Get LocalStorage
+        const results = JSON.parse(localStorage.getItem('equipmentsList'));
+        commit('SET_EQUIPMENTS', results);
+      } else {
+        getEquipments()
+          .then((response) => response.data)
+          .then((data) => {
+            const results = {
+              results: data.results.map((m) => ({
+                ...m,
+                itemType: 'equipments'
+              })),
+              count: data.count,
+              loading: false
+            };
+            commit('SET_EQUIPMENTS', results);
+            // Set LocalStorage
+            localStorage.setItem('equipmentsList', JSON.stringify(results));
           });
       }
     },

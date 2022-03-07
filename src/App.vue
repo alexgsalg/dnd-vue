@@ -40,6 +40,7 @@ export default Vue.extend({
     this.$store.dispatch('getClassesAction');
     this.$store.dispatch('getAlignmentsAction');
     this.$store.dispatch('getRacesAction');
+    this.$store.dispatch('getEquipmentsAction');
   }
 });
 </script>
