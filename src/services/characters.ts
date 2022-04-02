@@ -5,13 +5,13 @@ const api = axios.create({
 });
 
 export const getAlignments = () => {
-  return api.get('/alignments');
+  return api.get('/api/v1/alignments');
 };
 
 export const getEquipments = () => {
-  return api.get('/equipments');
+  return api.get('/api/v1/equipments');
 };
 
 export const getRaces = () => {
-  return api.get('/races');
+  return api.get('/api/v1/races');
 };

@@ -70,6 +70,7 @@ export default Vue.extend({
 
   mounted() {
     if (!this.classes.loading) this.sktLoading = false;
+    this.$store.dispatch('getClassesAction');
   },
 
   methods: {

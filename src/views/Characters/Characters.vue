@@ -19,7 +19,7 @@
   </PageHeader>
   <v-container>
     <v-tabs-items v-model="tab" class="content">
-      <v-tab-item key="classes">
+      <v-tab-item key="equipments">
         <div class="row">
           <list-card
             :cols="12"
@@ -27,8 +27,8 @@
             :md="6"
             :lg="6"
             :xl="4"
-            v-for="item of classes.results"
-            dataType="classes"
+            v-for="item of equipments.results"
+            dataType="equipments"
             :key="item.index"
             :data="item"
             @onCardClicked="cardClicked($event)"
@@ -105,8 +105,8 @@ export default Vue.extend({
     sktLoading: true
   }),
   computed: {
-    classes() {
-      return this.$store.state.classes;
+    equipments() {
+      return this.$store.state.equipments;
     },
     races() {
       return this.$store.state.races;
@@ -117,7 +117,10 @@ export default Vue.extend({
   },
 
   mounted() {
-    if (!this.classes.loading) this.sktLoading = false;
+    if (!this.equipments.loading) this.sktLoading = false;
+    this.$store.dispatch('getAlignmentsAction');
+    this.$store.dispatch('getRacesAction');
+    this.$store.dispatch('getEquipmentsAction');
   },
 
   methods: {

@@ -13,6 +13,7 @@
         <!-- Icon -->
         <div class="card_img">
           <v-img
+            v-if="cardIcon"
             contain
             max-height="100%"
             max-width="45%"
@@ -26,6 +27,11 @@
         <v-card-subtitle v-else-if="dataType === 'monsters'"
           ><span>AC: </span>{{ data.armor_class }} | <span>XP: </span
           >{{ data.xp }}
+        </v-card-subtitle>
+        <v-card-subtitle v-else-if="dataType === 'equipments'">
+          <span>Type: </span>{{ data.equipment_category.name }} | 
+          <span>Weight: </span>{{ data.xp }}lbs | 
+          <span>Cost: </span>{{ data.cost.quantity }}{{ data.cost.unit }}
         </v-card-subtitle>
         <v-card-subtitle v-else
           ><span>Alignment: </span>{{ data.desc }}</v-card-subtitle
@@ -51,8 +57,8 @@ enum MessageType {
 enum IconType {
   'spells' = 'book.png',
   'monsters' = 'hand.png',
-  'alignments' = 'armor.png',
-  'classes' = 'swords.png',
+  'equipments' = 'armor.png',
+  'alignments' = 'swords.png',
   'races' = 'helmet.png'
 }
 
@@ -86,14 +92,13 @@ export default Vue.extend({
 
   methods: {
     async onCardClick(): Promise<void> {
-      console.log(this.$props.data);
       this.$emit('onCardClicked', this.$props.data);
     }
   },
   filters: {
     subtitleFormat(desc: string): any {
       if (desc && desc.length > 70) {
-        desc = desc.substring(0, 70) + '...';
+        desc = desc.substring(0, 60) + '...';
         return desc;
       }
       return desc;

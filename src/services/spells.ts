@@ -5,5 +5,5 @@ const api = axios.create({
 });
 
 export const getAllSpells = () => {
-  return api.get('/spells');
+  return api.get('/api/v1/spells');
 };
