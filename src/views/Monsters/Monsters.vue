@@ -86,6 +86,7 @@ export default Vue.extend({
 
   mounted() {
     if (!this.monsters.loading) this.sktLoading = false;
+    this.$store.dispatch('getMonstersAction');
   },
 
   methods: {

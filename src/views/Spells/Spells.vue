@@ -86,6 +86,7 @@ export default Vue.extend({
 
   mounted() {
     if (!this.spells.loading) this.sktLoading = false;
+    this.$store.dispatch('getSpellsAction');
   },
 
   methods: {

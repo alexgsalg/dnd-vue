@@ -5,5 +5,5 @@ const api = axios.create({
 });
 
 export const getAllMonsters = () => {
-  return api.get('/monsters');
+  return api.get('/api/v1/monsters');
 };

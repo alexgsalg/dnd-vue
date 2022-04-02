@@ -118,6 +118,9 @@ export default Vue.extend({
 
   mounted() {
     if (!this.equipments.loading) this.sktLoading = false;
+    this.$store.dispatch('getAlignmentsAction');
+    this.$store.dispatch('getRacesAction');
+    this.$store.dispatch('getEquipmentsAction');
   },
 
   methods: {

@@ -5,7 +5,7 @@ const api = axios.create({
 });
 
 export const getClasses = () => {
-  return api.get('/classes');
+  return api.get('/api/v1/classes');
 };
 
 export const getSpellsByClasse = (selectedClass) => {
