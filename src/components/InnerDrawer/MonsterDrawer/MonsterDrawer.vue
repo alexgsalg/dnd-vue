@@ -207,11 +207,6 @@ export default Vue.extend({
       const words = value.substring(value.indexOf(':'));
       return words.substring(1);
     }
-    // sanitizeText (value) {
-    //   const words = value.substring(value.indexOf(":"));
-    //   if (value.indexOf("_")) return
-    //   return words.substring(1);
-    // }
   }
 });
 </script>

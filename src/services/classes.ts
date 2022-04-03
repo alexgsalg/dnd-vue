@@ -9,5 +9,5 @@ export const getClasses = () => {
 };
 
 export const getSpellsByClasse = (selectedClass) => {
-  return api.get(`/classes/${selectedClass}/spells`);
+  return api.get(`/api/v1/spells/class/${selectedClass}`);
 };

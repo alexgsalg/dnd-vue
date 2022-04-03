@@ -33,6 +33,9 @@
           <span>Weight: </span>{{ data.xp }}lbs | 
           <span>Cost: </span>{{ data.cost.quantity }}{{ data.cost.unit }}
         </v-card-subtitle>
+        <v-card-subtitle v-else-if="dataType === 'classes'">
+          <span>Hit die: </span>{{ data.hit_die }}
+        </v-card-subtitle>
         <v-card-subtitle v-else
           ><span>Alignment: </span>{{ data.desc }}</v-card-subtitle
         >
@@ -57,6 +60,7 @@ enum MessageType {
 enum IconType {
   'spells' = 'book.png',
   'monsters' = 'hand.png',
+  'classes' = 'helmet.png',
   'equipments' = 'armor.png',
   'alignments' = 'swords.png',
   'races' = 'helmet.png'

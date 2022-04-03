@@ -89,3 +89,21 @@
   }
   
 }
+
+
+// Breakpoint
+@media screen and (max-width: 1200px) {
+}
+@media screen and (max-width: 900px) {
+}
+@media screen and (max-width: 600px) {
+  .card_header {
+    flex-wrap: nowrap;
+    align-items: center;
+
+    .v-card__title {
+      font-size: 1.7rem !important;
+      padding: 0;
+    }
+  }
+}

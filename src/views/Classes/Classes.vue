@@ -7,10 +7,10 @@
       <div class="row">
         <list-card
           :cols="12"
-          :sm="12"
-          :md="6"
-          :lg="6"
-          :xl="4"
+          :sm="4"
+          :md="4"
+          :lg="4"
+          :xl="3"
           v-for="item of filterClasses"
           dataType="classes"
           :key="item.index"
@@ -24,7 +24,7 @@
         <Drawer
           :dataToCard="dataToCard"
           :showDrawer="showDrawer"
-          componentToLoad="class_drawer"
+          componentToLoad="classes_drawer"
           @onCloseDrawer="closeDrawer()"
         />
       </Transition>
@@ -34,6 +34,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import { getSpellsByClasse } from '../../services';
 import PageHeader from '../../components/PageHeader/PageHeader.vue';
 import ListCard from '../../components/ListCard/ListCard.vue';
 import Drawer from '../../components/Drawer/Drawer.vue';
@@ -71,18 +72,22 @@ export default Vue.extend({
   mounted() {
     if (!this.classes.loading) this.sktLoading = false;
     this.$store.dispatch('getClassesAction');
+    
   },
 
   methods: {
-    cardClicked(item): void {
-      this.dataToCard = item;
-      this.showDrawer = true;
-      this.$store.commit('setDrawerState', true);
+    async cardClicked(item): Promise<void> {
+      await getSpellsByClasse(item.index).then((response) => {
+        item.class_spells = response.data.results || [];
+        this.dataToCard = item;
+        this.showDrawer = true;
+        this.$store.commit('setDrawerState', true);
+      })
     },
 
     closeDrawer() {
       this.showDrawer = false;
-    }
+    },
   }
 });
 </script>
