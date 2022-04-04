@@ -80,15 +80,12 @@
 
     <div class="box" v-if="data.class_spells">
       <h5>Class Spells ({{ data.class_spells.length }}):</h5>
-      <div class="box_inner">
-        <p> 
-          <span v-for="(spell, i) of data.class_spells" :key="i">
-            <template v-if="i > 0">&nbsp; | &nbsp;</template>
-            <strong>{{ spell.name }} </strong>on level {{spell.level}}
-          </span>
-        </p>
+      <div class="box_inner row">
+          <p class="text_box col-md-5 col-sm-12" v-for="(spell, i) of data.class_spells" :key="i">
+            <template>| &nbsp;</template>
+            <strong>{{ spell.name }} </strong>- lvl {{spell.level}}
+          </p>
       </div>
-      <v-divider dark></v-divider>
     </div>
 
   </div>

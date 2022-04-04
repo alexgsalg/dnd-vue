@@ -12,6 +12,3 @@ export const getEquipments = () => {
   return api.get('/api/v1/equipments');
 };
 
-export const getRaces = () => {
-  return api.get('/api/v1/races');
-};

@@ -2,14 +2,10 @@
 <div class="fullheight">
   <PageHeader :title="'Character information'" :page="'characters'" :spanType="'count'">
     
-    <v-tabs slot="tabs" class="side container" v-model="tab" hide-on-leave>
+    <v-tabs slot="tabs" class="side container" v-model="tab" >
       <v-tab class="side_item" key="classes">
         <img src="../../assets/img/swords.png" class="side__img" alt="Classes icon">
-        <a class="side__title">Classes</a>
-      </v-tab>
-      <v-tab class="side_item" key="races">
-        <img src="../../assets/img/helmet.png" class="side__img" alt="Races icon">
-        <a class="side__title">Races</a>
+        <a class="side__title">Equipments</a>
       </v-tab>
       <v-tab class="side_item" key="equipment">
         <img src="../../assets/img/armor.png" class="side__img" alt="alignments icon">
@@ -20,23 +16,22 @@
   <v-container>
     <v-tabs-items v-model="tab" class="content">
       <v-tab-item key="equipments">
-        <div class="row">
-          <list-card
-            :cols="12"
-            :sm="12"
-            :md="6"
-            :lg="6"
-            :xl="4"
-            v-for="item of equipments.results"
-            dataType="equipments"
-            :key="item.index"
-            :data="item"
-            @onCardClicked="cardClicked($event)"
-            :sktLoading="sktLoading"
-          ></list-card>
+        <div class="searchform">
+          <h3 class="searchform__title">Search equipment</h3>
+          <fieldset class="searchform__field">
+            <legend></legend>
+            <input
+              type="text"
+              class="searchform__input"
+              v-model="filter"
+              placeholder="Search the monster name..."
+            />
+            <font-awesome-icon
+              icon="fa-solid fa-magnifying-glass"
+              class="searchform__icon alt"
+            />
+          </fieldset>
         </div>
-      </v-tab-item>
-      <v-tab-item key="races">
         <div class="row">
           <list-card
             :cols="12"
@@ -44,8 +39,8 @@
             :md="6"
             :lg="6"
             :xl="4"
-            v-for="item of races.results"
-            dataType="races"
+            v-for="item of filterEquipments"
+            dataType="equipments"
             :key="item.index"
             :data="item"
             @onCardClicked="cardClicked($event)"
@@ -99,6 +94,7 @@ export default Vue.extend({
     Drawer
     },
   data: () => ({
+    filter: '',
     dataToCard: ({} as CardData) || {},
     tab: null,
     showDrawer: false,
@@ -108,8 +104,10 @@ export default Vue.extend({
     equipments() {
       return this.$store.state.equipments;
     },
-    races() {
-      return this.$store.state.races;
+    filterEquipments() {
+      return this.equipments.results.filter((alignmentItem) => {
+        return alignmentItem.name.toLowerCase().includes(this.filter.toLowerCase());
+      });
     },
     alignments() {
       return this.$store.state.alignments;
@@ -119,7 +117,6 @@ export default Vue.extend({
   mounted() {
     if (!this.equipments.loading) this.sktLoading = false;
     this.$store.dispatch('getAlignmentsAction');
-    this.$store.dispatch('getRacesAction');
     this.$store.dispatch('getEquipmentsAction');
   },
 

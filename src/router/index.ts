@@ -5,6 +5,7 @@ import Spells from '../views/Spells/Spells.vue';
 import Monsters from '../views/Monsters/Monsters.vue';
 import Characters from '../views/Characters/Characters.vue';
 import Classes from '../views/Classes/Classes.vue';
+import Races from '../views/Races/Races.vue';
 
 Vue.use(VueRouter);
 
@@ -25,14 +26,19 @@ const routes: Array<RouteConfig> = [
     component: Monsters
   },
   {
-    path: '/characters',
-    name: 'Characters',
-    component: Characters
-  },
-  {
     path: '/classes',
     name: 'Classes',
     component: Classes
+  },
+  {
+    path: '/races',
+    name: 'Races',
+    component: Races
+  },
+  {
+    path: '/characters',
+    name: 'Characters',
+    component: Characters
   }
   // {
   //   path: '/about',

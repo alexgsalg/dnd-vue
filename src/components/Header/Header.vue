@@ -65,6 +65,11 @@ export default Vue.extend({
         icon: 'fa-address-book'
       },
       {
+        name: 'Races',
+        route: '/races',
+        icon: 'fa-dragon'
+      },
+      {
         name: 'Characters',
         route: '/characters',
         icon: 'fa-person-dots-from-line'

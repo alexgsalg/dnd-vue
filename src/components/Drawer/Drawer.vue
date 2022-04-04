@@ -2,7 +2,7 @@
   <div class="drawer" :class="{ open: showDrawer }">
     <div class="drawer_body">
       <div class="drawer_header">
-        <div @click="onCloseDrawer()">
+        <div @click="onCloseDrawer()" class="back">
           <button>
             <font-awesome-icon icon="fa-solid fa-angles-left" />
           </button>
@@ -20,16 +20,22 @@
         v-else-if="componentToLoad === 'monster_drawer'"
         :data="dataToCard"
       />
-      <!-- If Character Data -->
-      <character-drawer
-        v-else-if="componentToLoad === 'character_drawer'"
-        :data="dataToCard"
-      />
       <!-- If Classes Data -->
       <classes-drawer
         v-else-if="componentToLoad === 'classes_drawer'"
         :data="dataToCard"
         :loadData="showDrawer"
+      />
+      <!-- If Races Data -->
+      <races-drawer
+        v-else-if="componentToLoad === 'races_drawer'"
+        :data="dataToCard"
+        :loadData="showDrawer"
+      />
+      <!-- If Character Data -->
+      <character-drawer
+        v-else-if="componentToLoad === 'character_drawer'"
+        :data="dataToCard"
       />
     </div>
     <!-- Mask -->
@@ -42,12 +48,14 @@ import Vue from 'vue';
 import SpellDrawer from '../InnerDrawer/SpellDrawer/SpellDrawer.vue';
 import MonsterDrawer from '../InnerDrawer/MonsterDrawer/MonsterDrawer.vue';
 import ClassesDrawer from '../InnerDrawer/ClassesDrawer/ClassesDrawer.vue';
+import RacesDrawer from '../InnerDrawer/RacesDrawer/RacesDrawer.vue';
 
 export default Vue.extend({
   components: {
     SpellDrawer,
     MonsterDrawer,
-    ClassesDrawer
+    ClassesDrawer,
+    RacesDrawer
   },
   name: 'Drawer',
   props: {

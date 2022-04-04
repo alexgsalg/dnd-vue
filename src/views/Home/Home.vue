@@ -61,6 +61,14 @@ export default Vue.extend({
           cover: 'wizard.jpg'
         },
         {
+          title: 'D&D Races',
+          subtitle: 'Understand your history',
+          route: '/races',
+          icon: 'fa-dragon',
+          btnText: 'Know your legacy',
+          cover: 'races.jpg'
+        },
+        {
           title: 'Characters list',
           subtitle: 'Powerfull and usefull spells to use in you campaign',
           route: '/characters',

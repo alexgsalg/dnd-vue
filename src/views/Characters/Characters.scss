@@ -1,3 +1,5 @@
+@import '../../sass/mixins.scss';
+
 .fullheight {
   height: 100%;
 }
@@ -12,8 +14,20 @@
   // height: 100%;
   padding-bottom: 0 !important;
 
-  .v-slide-group {
+  @include breakpoint(phone) {
+    position: relative;
+    width: 100vw !important;
+    margin-left: -2rem;
+    margin-right: -2rem;
+    padding: 0 !important;
+  }
 
+  .v-slide-group__wrapper {
+    @include breakpoint(phone) {
+      width: 100vw !important;
+      // margin-left: -5rem;
+      // margin-right: -5rem;
+    }
   }
 
   &_item {
@@ -23,12 +37,20 @@
   &__img {
     width: 2.5rem;
     margin-right: 1rem;
-  }
 
+    @include breakpoint(phone) {
+      display: none;
+    }
+  }
+  
   &__title {
     font-size: var(--fontsize-6);
     color: var(--color-lighter) !important;
     display: inline-block;
+    
+    @include breakpoint(phone) {
+      font-size: var(--fontsize-8);
+    }
   }
 }
 

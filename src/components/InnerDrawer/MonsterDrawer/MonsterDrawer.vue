@@ -172,8 +172,6 @@
         </p>
       </div>
     </div>
-    <v-divider dark></v-divider>
-
 
   </div>
 </template>

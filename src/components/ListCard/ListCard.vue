@@ -28,15 +28,19 @@
           ><span>AC: </span>{{ data.armor_class }} | <span>XP: </span
           >{{ data.xp }}
         </v-card-subtitle>
-        <v-card-subtitle v-else-if="dataType === 'equipments'">
+        <v-card-subtitle v-else-if="dataType === 'classes'">
+          <span>Hit die: </span>{{ data.hit_die }}
+        </v-card-subtitle>
+        <v-card-subtitle v-else-if="dataType === 'equipments'" class="mobile_visible">
           <span>Type: </span>{{ data.equipment_category.name }} | 
           <span>Weight: </span>{{ data.xp }}lbs | 
           <span>Cost: </span>{{ data.cost.quantity }}{{ data.cost.unit }}
         </v-card-subtitle>
-        <v-card-subtitle v-else-if="dataType === 'classes'">
-          <span>Hit die: </span>{{ data.hit_die }}
+        <v-card-subtitle v-else-if="dataType === 'races'">
+          <span>Speed: </span>{{ data.speed }} | 
+          <span>Size: </span>{{ data.size }}
         </v-card-subtitle>
-        <v-card-subtitle v-else
+        <v-card-subtitle v-else class="mobile_visible"
           ><span>Alignment: </span>{{ data.desc }}</v-card-subtitle
         >
       </div>
@@ -53,9 +57,10 @@
 import Vue from 'vue';
 
 enum MessageType {
-  'spells' = 'What it does?',
+  'spells' = 'What it does',
   'monsters' = 'Monster stats',
-  'classes' = 'Gimme infos'
+  'classes' = 'Gimme infos',
+  'races' = 'Know better'
 }
 enum IconType {
   'spells' = 'book.png',
